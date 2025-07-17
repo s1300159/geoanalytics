@@ -1,7 +1,6 @@
 # findNeighboursUsingEuclidean is a code used to create a neighbourhood file using Euclidean distance.
 #
 #  **Importing this algorithm into a python program**
-# --------------------------------------------------------
 #
 #     from PAMI.extras.neighbours import findNeighboursUsingEuclidean as db
 #
@@ -45,22 +44,25 @@ class FindNeighboursUsingEuclidean:
 
         :param iFile : file
             Input file name or path of the input file
+
         :param maxDist : int
             The user can specify maxEuclideanDistance.
             This program find pairs of values whose Euclidean distance is less than or equal to maxEucledianDistace
             and store the pairs.
+
         :param  sep: str :
-                    This variable is used to distinguish items from one another in a transaction. The default seperator is tab space. However, the users can override their default separator.
+            This variable is used to distinguish items from one another in a transaction. The default seperator is tab space. However, the users can override their default separator.
 
     :Methods:
 
         mine()
             find and store the pairs of values whose Euclidean distance is less than or equal to maxEucledianDistace.
+
         getFileName()
             This function returns output file name.
 
     **Importing this algorithm into a python program**
-    --------------------------------------------------------
+
     .. code-block:: python
 
             from PAMI.extras.neighbours import findNeighboursUsingEuclidean as db
@@ -68,6 +70,7 @@ class FindNeighboursUsingEuclidean:
             obj = db.findNeighboursUsingEuclidean(iFile, oFile, 10, "\t")
 
             obj.save()
+
     """
 
     def __init__(self, iFile: str, maxDist: int, sep='\t', DBtype="csv"):
@@ -168,3 +171,4 @@ class FindNeighboursUsingEuclidean:
 
 if __name__ == "__main__":
     obj = FindNeighboursUsingEuclidean(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+

@@ -2,7 +2,6 @@
 #
 #
 # **Importing this algorithm into a python program**
-# --------------------------------------------------------
 #
 #             from PAMI.extras.DF2DB import DF2DB as db
 #
@@ -14,7 +13,6 @@
 #
 #             obj.convert2Utility("outputFileName") # To create utility database
 #
-
 
 
 
@@ -75,7 +73,7 @@ class DF2DB:
 
 
     **Importing this algorithm into a python program**
-    --------------------------------------------------------
+
     .. code-block:: python
 
             from PAMI.extras.DF2DB import DF2DB as db
@@ -111,6 +109,7 @@ class DF2DB:
     def convert2TransactionalDatabase(self, oFile: str, condition: str, thresholdValue: Union[int, float]) -> None:
         """
         create transactional database and return oFileName
+
         :param oFile: file name or path to store database
         :type oFile: str
         :param condition: It is condition to judge the value
@@ -143,6 +142,7 @@ class DF2DB:
     def convert2TemporalDatabase(self, oFile: str, condition: str, thresholdValue: Union[int, float]) -> None:
         """
         create temporal database and return oFile name
+
         :param oFile: file name or path to store database
         :type oFile: str
         :param condition: It is condition to judge the value
@@ -176,6 +176,7 @@ class DF2DB:
     def convert2UtilityDatabase(self, oFile: str) ->None:
         """
         create utility database and return oFile name
+
         :param oFile:  file name or path to store database
         :type oFile: str
         """
@@ -200,6 +201,7 @@ class DF2DB:
     def convert2geoReferencedTransactionalDatabase(self, oFile: str, condition: str, thresholdValue: Union[int, float]) -> str:
         """
         create transactional database and return oFileName
+
         :param oFile: file name or path to store database
         :type oFile: str
         :param condition: It is condition to judge the value
@@ -234,6 +236,7 @@ class DF2DB:
     def convert2geoReferencedTemporalDatabase(self, oFile: str, condition: str, thresholdValue: Union[int, float]) -> str:
         """
         create temporal database and return oFile name
+
         :param oFile: file name or path to store database
         :type oFile: str
         :param condition: It is condition to judge the value
@@ -386,3 +389,5 @@ if __name__ == '__main__':
     print("Total Memory in USS:", obj.getMemoryUSS())
     print("Total Memory in RSS", obj.getMemoryRSS())
     print("Total ExecutionTime in ms:", obj.getRuntime())
+
+

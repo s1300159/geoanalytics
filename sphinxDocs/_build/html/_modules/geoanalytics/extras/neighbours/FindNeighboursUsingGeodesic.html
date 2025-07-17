@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>geoanalytics.extras.neighbours.FindNeighboursUsingGeodesic &mdash; geoanalytics 2025.12.06 documentation</title>
+  <title>geoanalytics.extras.neighbours.FindNeighboursUsingGeodesic &mdash; geoanalytics 2025.07.17 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
 
@@ -74,7 +74,6 @@
 <span></span><span class="c1"># findNeighboursUsingGeodesic is a code used to create a neighbourhood file using Geodesic distance.</span>
 <span class="c1">#</span>
 <span class="c1">#  **Importing this algorithm into a python program**</span>
-<span class="c1"># --------------------------------------------------------</span>
 <span class="c1">#</span>
 <span class="c1">#     from PAMI.extras.neighbours import findNeighboursUsingGeodesic as db</span>
 <span class="c1">#</span>
@@ -117,23 +116,26 @@
 
 <span class="sd">        :param iFile : file</span>
 <span class="sd">            Input file name or path of the input file</span>
+
 <span class="sd">        :param maxDist : float</span>
 <span class="sd">            The user can specify maxDist in Km(Kilometers).</span>
 <span class="sd">            This program find pairs of values whose Geodesic distance is less than or equal to maxDistace</span>
 <span class="sd">            and store the pairs.</span>
+
 <span class="sd">        :param  sep: str :</span>
-<span class="sd">                    This variable is used to distinguish items from one another in a transaction. The default seperator is tab space. However, the users can override their default separator.</span>
+<span class="sd">            This variable is used to distinguish items from one another in a transaction. The default seperator is tab space. However, the users can override their default separator.</span>
 
 
 <span class="sd">    :Methods:</span>
 
 <span class="sd">        mine()</span>
 <span class="sd">            find and store the pairs of values whose Geodesic distance is less than or equal to maxDistace.</span>
+
 <span class="sd">        getFileName()</span>
 <span class="sd">            This function returns output file name.</span>
 
 <span class="sd">    **Importing this algorithm into a python program**</span>
-<span class="sd">    --------------------------------------------------------</span>
+
 <span class="sd">    .. code-block:: python</span>
 
 <span class="sd">            from PAMI.extras.neighbours import findNeighboursUsingGeodesic as db</span>
@@ -232,6 +234,7 @@
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">obj</span> <span class="o">=</span> <span class="n">FindNeighboursUsingGeodesic</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+
 </pre></div>
 
            </div>
@@ -241,7 +244,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Vanitha Kattumuri.</p>
+    <p>&#169; Copyright 2025, RAGE UDAY KIRAN.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

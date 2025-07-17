@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>geoanalytics.oneClassClassifiers.sequential package &mdash; geoanalytics 2025.12.06 documentation</title>
+  <title>geoanalytics.oneClassClassifiers.sequential package &mdash; geoanalytics 2025.07.17 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
 
@@ -51,8 +51,10 @@
 <li class="toctree-l3 current"><a class="reference internal" href="geoanalytics.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="geoanalytics.clustering.html">geoanalytics.clustering package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="geoanalytics.conversion.html">geoanalytics.conversion package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="geoanalytics.datasets.html">geoanalytics.datasets package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="geoanalytics.extras.html">geoanalytics.extras package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="geoanalytics.imputation.html">geoanalytics.imputation package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="geoanalytics.normalization.html">geoanalytics.normalization package</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="geoanalytics.oneClassClassifiers.html">geoanalytics.oneClassClassifiers package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="geoanalytics.patternMining.html">geoanalytics.patternMining package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="geoanalytics.scoreCalculator.html">geoanalytics.scoreCalculator package</a></li>
@@ -64,6 +66,7 @@
 <li class="toctree-l3"><a class="reference internal" href="geoanalytics.html#module-geoanalytics.clustering">geoanalytics.clustering module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="geoanalytics.html#module-geoanalytics.config">geoanalytics.config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="geoanalytics.html#geoanalytics-csv2raster-module">geoanalytics.csv2raster module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geoanalytics.html#module-geoanalytics.loader">geoanalytics.loader module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="geoanalytics.html#module-geoanalytics.oneclassClassifiers">geoanalytics.oneclassClassifiers module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="geoanalytics.html#module-geoanalytics.plotGUI">geoanalytics.plotGUI module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="geoanalytics.html#geoanalytics-raster2csv-module">geoanalytics.raster2CSV module</a></li>
@@ -108,32 +111,333 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="geoanalytics-oneclassclassifiers-sequential-fuzzytsc-module">
-<h2>geoanalytics.oneClassClassifiers.sequential.FuzzyTSC module<a class="headerlink" href="#geoanalytics-oneclassclassifiers-sequential-fuzzytsc-module" title="Permalink to this heading"></a></h2>
+<section id="module-geoanalytics.oneClassClassifiers.sequential.FuzzyTSC">
+<span id="geoanalytics-oneclassclassifiers-sequential-fuzzytsc-module"></span><h2>geoanalytics.oneClassClassifiers.sequential.FuzzyTSC module<a class="headerlink" href="#module-geoanalytics.oneClassClassifiers.sequential.FuzzyTSC" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.FuzzyTSC.FuzzyTSC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.FuzzyTSC.</span></span><span class="sig-name descname"><span class="pre">FuzzyTSC</span></span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/FuzzyTSC.html#FuzzyTSC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.FuzzyTSC.FuzzyTSC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.FuzzyTSC.FuzzyTSC.compute_rd_cuda">
+<span class="sig-name descname"><span class="pre">compute_rd_cuda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_columns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/FuzzyTSC.html#FuzzyTSC.compute_rd_cuda"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.FuzzyTSC.FuzzyTSC.compute_rd_cuda" title="Permalink to this definition"></a></dt>
+<dd><p>Compute RD scores using CUDA for GPU acceleration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.FuzzyTSC.FuzzyTSC.compute_rd_kernel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_rd_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rd_scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_columns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/FuzzyTSC.html#FuzzyTSC.compute_rd_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.FuzzyTSC.FuzzyTSC.compute_rd_kernel" title="Permalink to this definition"></a></dt>
+<dd><p>CUDA kernel for RD score computation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.FuzzyTSC.FuzzyTSC.compute_rd_parallel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_rd_parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_columns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/FuzzyTSC.html#FuzzyTSC.compute_rd_parallel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.FuzzyTSC.FuzzyTSC.compute_rd_parallel" title="Permalink to this definition"></a></dt>
+<dd><p>Compute RD scores using multi-threaded parallel processing with Numba.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.FuzzyTSC.FuzzyTSC.compute_rd_sequential">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_rd_sequential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_columns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/FuzzyTSC.html#FuzzyTSC.compute_rd_sequential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.FuzzyTSC.FuzzyTSC.compute_rd_sequential" title="Permalink to this definition"></a></dt>
+<dd><p>Compute RD scores for sequential-threaded execution.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.FuzzyTSC.FuzzyTSC.getStatistics">
+<span class="sig-name descname"><span class="pre">getStatistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">startTime</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/FuzzyTSC.html#FuzzyTSC.getStatistics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.FuzzyTSC.FuzzyTSC.getStatistics" title="Permalink to this definition"></a></dt>
+<dd><p>Statistics of the Algorithm after execution</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.FuzzyTSC.FuzzyTSC.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topK</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sequential'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FuzzyTSC'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/FuzzyTSC.html#FuzzyTSC.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.FuzzyTSC.FuzzyTSC.run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="geoanalytics-oneclassclassifiers-sequential-onenndtw-module">
-<h2>geoanalytics.oneClassClassifiers.sequential.OneNNDTW module<a class="headerlink" href="#geoanalytics-oneclassclassifiers-sequential-onenndtw-module" title="Permalink to this heading"></a></h2>
+<section id="module-geoanalytics.oneClassClassifiers.sequential.OneNNDTW">
+<span id="geoanalytics-oneclassclassifiers-sequential-onenndtw-module"></span><h2>geoanalytics.oneClassClassifiers.sequential.OneNNDTW module<a class="headerlink" href="#module-geoanalytics.oneClassClassifiers.sequential.OneNNDTW" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNDTW.OneNNDTW">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.OneNNDTW.</span></span><span class="sig-name descname"><span class="pre">OneNNDTW</span></span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNDTW.html#OneNNDTW"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNDTW.OneNNDTW" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNDTW.OneNNDTW.compute_dtw_cuda">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_dtw_cuda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNDTW.html#OneNNDTW.compute_dtw_cuda"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNDTW.OneNNDTW.compute_dtw_cuda" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNDTW.OneNNDTW.compute_dtw_sequential">
+<span class="sig-name descname"><span class="pre">compute_dtw_sequential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNDTW.html#OneNNDTW.compute_dtw_sequential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNDTW.OneNNDTW.compute_dtw_sequential" title="Permalink to this definition"></a></dt>
+<dd><p>Wrapper to convert DataFrame to NumPy and apply optimized function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNDTW.OneNNDTW.dtw_cuda_kernel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtw_cuda_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNDTW.html#OneNNDTW.dtw_cuda_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNDTW.OneNNDTW.dtw_cuda_kernel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNDTW.OneNNDTW.get_statistics">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNDTW.html#OneNNDTW.get_statistics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNDTW.OneNNDTW.get_statistics" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNDTW.OneNNDTW.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topK</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sequential'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DTW'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNDTW.html#OneNNDTW.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNDTW.OneNNDTW.run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNDTW.compute_dtw_parallel">
+<span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.OneNNDTW.</span></span><span class="sig-name descname"><span class="pre">compute_dtw_parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNDTW.html#compute_dtw_parallel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNDTW.compute_dtw_parallel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNDTW.compute_dtw_sequential_numba">
+<span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.OneNNDTW.</span></span><span class="sig-name descname"><span class="pre">compute_dtw_sequential_numba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_np</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNDTW.html#compute_dtw_sequential_numba"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNDTW.compute_dtw_sequential_numba" title="Permalink to this definition"></a></dt>
+<dd><p>Optimized sequential-threaded DTW computation using explicit formula.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNDTW.dtw_manual">
+<span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.OneNNDTW.</span></span><span class="sig-name descname"><span class="pre">dtw_manual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNDTW.html#dtw_manual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNDTW.dtw_manual" title="Permalink to this definition"></a></dt>
+<dd><p>Manually computes DTW distance using explicit formula.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNDTW.dtw_numba">
+<span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.OneNNDTW.</span></span><span class="sig-name descname"><span class="pre">dtw_numba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNDTW.html#dtw_numba"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNDTW.dtw_numba" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
-<section id="geoanalytics-oneclassclassifiers-sequential-onenned-module">
-<h2>geoanalytics.oneClassClassifiers.sequential.OneNNED module<a class="headerlink" href="#geoanalytics-oneclassclassifiers-sequential-onenned-module" title="Permalink to this heading"></a></h2>
+<section id="module-geoanalytics.oneClassClassifiers.sequential.OneNNED">
+<span id="geoanalytics-oneclassclassifiers-sequential-onenned-module"></span><h2>geoanalytics.oneClassClassifiers.sequential.OneNNED module<a class="headerlink" href="#module-geoanalytics.oneClassClassifiers.sequential.OneNNED" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNED.OneNNED">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.OneNNED.</span></span><span class="sig-name descname"><span class="pre">OneNNED</span></span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNED.html#OneNNED"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNED.OneNNED" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNED.OneNNED.compute_ed_cuda">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_ed_cuda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNED.html#OneNNED.compute_ed_cuda"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNED.OneNNED.compute_ed_cuda" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNED.OneNNED.compute_ed_cuda_kernel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_ed_cuda_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNED.html#OneNNED.compute_ed_cuda_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNED.OneNNED.compute_ed_cuda_kernel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNED.OneNNED.compute_ed_parallel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_ed_parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_np</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNED.html#OneNNED.compute_ed_parallel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNED.OneNNED.compute_ed_parallel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNED.OneNNED.compute_ed_sequential">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_ed_sequential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNED.html#OneNNED.compute_ed_sequential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNED.OneNNED.compute_ed_sequential" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNED.OneNNED.get_statistics">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNED.html#OneNNED.get_statistics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNED.OneNNED.get_statistics" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNED.OneNNED.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topK</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sequential'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ED'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNED.html#OneNNED.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNED.OneNNED.run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="geoanalytics-oneclassclassifiers-sequential-onennhausdorff-module">
-<h2>geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff module<a class="headerlink" href="#geoanalytics-oneclassclassifiers-sequential-onennhausdorff-module" title="Permalink to this heading"></a></h2>
+<section id="module-geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff">
+<span id="geoanalytics-oneclassclassifiers-sequential-onennhausdorff-module"></span><h2>geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff module<a class="headerlink" href="#module-geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.OneNNHausdorff">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.</span></span><span class="sig-name descname"><span class="pre">OneNNHausdorff</span></span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNHausdorff.html#OneNNHausdorff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.OneNNHausdorff" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.OneNNHausdorff.compute_hausdorff_cuda">
+<span class="sig-name descname"><span class="pre">compute_hausdorff_cuda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNHausdorff.html#OneNNHausdorff.compute_hausdorff_cuda"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.OneNNHausdorff.compute_hausdorff_cuda" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.OneNNHausdorff.custom_hausdorff_kernel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">custom_hausdorff_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNHausdorff.html#OneNNHausdorff.custom_hausdorff_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.OneNNHausdorff.custom_hausdorff_kernel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.OneNNHausdorff.get_statistics">
+<span class="sig-name descname"><span class="pre">get_statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNHausdorff.html#OneNNHausdorff.get_statistics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.OneNNHausdorff.get_statistics" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.OneNNHausdorff.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topK</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sequential'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Hausdorff'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNHausdorff.html#OneNNHausdorff.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.OneNNHausdorff.run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.compute_hausdorff_parallel">
+<span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.</span></span><span class="sig-name descname"><span class="pre">compute_hausdorff_parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_np</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNHausdorff.html#compute_hausdorff_parallel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.compute_hausdorff_parallel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.compute_hausdorff_sequential">
+<span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.</span></span><span class="sig-name descname"><span class="pre">compute_hausdorff_sequential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_np</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNHausdorff.html#compute_hausdorff_sequential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.compute_hausdorff_sequential" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.hausdorff_distance">
+<span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.</span></span><span class="sig-name descname"><span class="pre">hausdorff_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNHausdorff.html#hausdorff_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.hausdorff_distance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.hausdorff_numba">
+<span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.</span></span><span class="sig-name descname"><span class="pre">hausdorff_numba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNHausdorff.html#hausdorff_numba"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNHausdorff.hausdorff_numba" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
-<section id="geoanalytics-oneclassclassifiers-sequential-onennisolationforest-module">
-<h2>geoanalytics.oneClassClassifiers.sequential.OneNNIsolationForest module<a class="headerlink" href="#geoanalytics-oneclassclassifiers-sequential-onennisolationforest-module" title="Permalink to this heading"></a></h2>
+<section id="module-geoanalytics.oneClassClassifiers.sequential.OneNNIsolationForest">
+<span id="geoanalytics-oneclassclassifiers-sequential-onennisolationforest-module"></span><h2>geoanalytics.oneClassClassifiers.sequential.OneNNIsolationForest module<a class="headerlink" href="#module-geoanalytics.oneClassClassifiers.sequential.OneNNIsolationForest" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNIsolationForest.OneNNIsolationForest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.OneNNIsolationForest.</span></span><span class="sig-name descname"><span class="pre">OneNNIsolationForest</span></span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNIsolationForest.html#OneNNIsolationForest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNIsolationForest.OneNNIsolationForest" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNIsolationForest.OneNNIsolationForest.compute_iforest_parallel">
+<span class="sig-name descname"><span class="pre">compute_iforest_parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNIsolationForest.html#OneNNIsolationForest.compute_iforest_parallel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNIsolationForest.OneNNIsolationForest.compute_iforest_parallel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNIsolationForest.OneNNIsolationForest.compute_iforest_sequential">
+<span class="sig-name descname"><span class="pre">compute_iforest_sequential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNIsolationForest.html#OneNNIsolationForest.compute_iforest_sequential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNIsolationForest.OneNNIsolationForest.compute_iforest_sequential" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNIsolationForest.OneNNIsolationForest.getStatistics">
+<span class="sig-name descname"><span class="pre">getStatistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNIsolationForest.html#OneNNIsolationForest.getStatistics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNIsolationForest.OneNNIsolationForest.getStatistics" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNIsolationForest.OneNNIsolationForest.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topK</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sequential'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rasterIsolationForest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNIsolationForest.html#OneNNIsolationForest.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNIsolationForest.OneNNIsolationForest.run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="geoanalytics-oneclassclassifiers-sequential-onennmanhattan-module">
-<h2>geoanalytics.oneClassClassifiers.sequential.OneNNManhattan module<a class="headerlink" href="#geoanalytics-oneclassclassifiers-sequential-onennmanhattan-module" title="Permalink to this heading"></a></h2>
+<section id="module-geoanalytics.oneClassClassifiers.sequential.OneNNManhattan">
+<span id="geoanalytics-oneclassclassifiers-sequential-onennmanhattan-module"></span><h2>geoanalytics.oneClassClassifiers.sequential.OneNNManhattan module<a class="headerlink" href="#module-geoanalytics.oneClassClassifiers.sequential.OneNNManhattan" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNManhattan.OneNNManhattan">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.OneNNManhattan.</span></span><span class="sig-name descname"><span class="pre">OneNNManhattan</span></span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNManhattan.html#OneNNManhattan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNManhattan.OneNNManhattan" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNManhattan.OneNNManhattan.compute_manhattan_cuda">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_manhattan_cuda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNManhattan.html#OneNNManhattan.compute_manhattan_cuda"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNManhattan.OneNNManhattan.compute_manhattan_cuda" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNManhattan.OneNNManhattan.compute_manhattan_cuda_kernel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_manhattan_cuda_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNManhattan.html#OneNNManhattan.compute_manhattan_cuda_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNManhattan.OneNNManhattan.compute_manhattan_cuda_kernel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNManhattan.OneNNManhattan.compute_manhattan_parallel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_manhattan_parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_np</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNManhattan.html#OneNNManhattan.compute_manhattan_parallel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNManhattan.OneNNManhattan.compute_manhattan_parallel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNManhattan.OneNNManhattan.compute_manhattan_sequential">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_manhattan_sequential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNManhattan.html#OneNNManhattan.compute_manhattan_sequential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNManhattan.OneNNManhattan.compute_manhattan_sequential" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNManhattan.OneNNManhattan.get_statistics">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNManhattan.html#OneNNManhattan.get_statistics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNManhattan.OneNNManhattan.get_statistics" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNManhattan.OneNNManhattan.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topK</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sequential'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Manhattan'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNManhattan.html#OneNNManhattan.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNManhattan.OneNNManhattan.run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="geoanalytics-oneclassclassifiers-sequential-onennmaxnorm-module">
-<h2>geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm module<a class="headerlink" href="#geoanalytics-oneclassclassifiers-sequential-onennmaxnorm-module" title="Permalink to this heading"></a></h2>
+<section id="module-geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm">
+<span id="geoanalytics-oneclassclassifiers-sequential-onennmaxnorm-module"></span><h2>geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm module<a class="headerlink" href="#module-geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm.OneNNMaxNorm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm.</span></span><span class="sig-name descname"><span class="pre">OneNNMaxNorm</span></span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNMaxNorm.html#OneNNMaxNorm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm.OneNNMaxNorm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm.OneNNMaxNorm.compute_maxnorm_cuda">
+<span class="sig-name descname"><span class="pre">compute_maxnorm_cuda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNMaxNorm.html#OneNNMaxNorm.compute_maxnorm_cuda"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm.OneNNMaxNorm.compute_maxnorm_cuda" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm.OneNNMaxNorm.compute_maxnorm_cuda_kernel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_maxnorm_cuda_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNMaxNorm.html#OneNNMaxNorm.compute_maxnorm_cuda_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm.OneNNMaxNorm.compute_maxnorm_cuda_kernel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm.OneNNMaxNorm.compute_maxnorm_parallel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_maxnorm_parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_np</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNMaxNorm.html#OneNNMaxNorm.compute_maxnorm_parallel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm.OneNNMaxNorm.compute_maxnorm_parallel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm.OneNNMaxNorm.compute_maxnorm_sequential">
+<span class="sig-name descname"><span class="pre">compute_maxnorm_sequential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNMaxNorm.html#OneNNMaxNorm.compute_maxnorm_sequential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm.OneNNMaxNorm.compute_maxnorm_sequential" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm.OneNNMaxNorm.getStatistics">
+<span class="sig-name descname"><span class="pre">getStatistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNMaxNorm.html#OneNNMaxNorm.getStatistics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm.OneNNMaxNorm.getStatistics" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm.OneNNMaxNorm.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topK</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sequential'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MaxNorm'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNMaxNorm.html#OneNNMaxNorm.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNMaxNorm.OneNNMaxNorm.run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="geoanalytics-oneclassclassifiers-sequential-onennsvm-module">
-<h2>geoanalytics.oneClassClassifiers.sequential.OneNNSVM module<a class="headerlink" href="#geoanalytics-oneclassclassifiers-sequential-onennsvm-module" title="Permalink to this heading"></a></h2>
+<section id="module-geoanalytics.oneClassClassifiers.sequential.OneNNSVM">
+<span id="geoanalytics-oneclassclassifiers-sequential-onennsvm-module"></span><h2>geoanalytics.oneClassClassifiers.sequential.OneNNSVM module<a class="headerlink" href="#module-geoanalytics.oneClassClassifiers.sequential.OneNNSVM" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNSVM.OneNNSVM">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.oneClassClassifiers.sequential.OneNNSVM.</span></span><span class="sig-name descname"><span class="pre">OneNNSVM</span></span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNSVM.html#OneNNSVM"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNSVM.OneNNSVM" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNSVM.OneNNSVM.compute_ocsvm_parallel">
+<span class="sig-name descname"><span class="pre">compute_ocsvm_parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing_np</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNSVM.html#OneNNSVM.compute_ocsvm_parallel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNSVM.OneNNSVM.compute_ocsvm_parallel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNSVM.OneNNSVM.compute_ocsvm_sequential">
+<span class="sig-name descname"><span class="pre">compute_ocsvm_sequential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing_np</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNSVM.html#OneNNSVM.compute_ocsvm_sequential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNSVM.OneNNSVM.compute_ocsvm_sequential" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNSVM.OneNNSVM.getStatistics">
+<span class="sig-name descname"><span class="pre">getStatistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNSVM.html#OneNNSVM.getStatistics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNSVM.OneNNSVM.getStatistics" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.oneClassClassifiers.sequential.OneNNSVM.OneNNSVM.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topK</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sequential'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OneClassSVM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/oneClassClassifiers/sequential/OneNNSVM.html#OneNNSVM.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.oneClassClassifiers.sequential.OneNNSVM.OneNNSVM.run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
+<section id="module-geoanalytics.oneClassClassifiers.sequential">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-geoanalytics.oneClassClassifiers.sequential" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 
@@ -148,7 +452,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Vanitha Kattumuri.</p>
+    <p>&#169; Copyright 2025, RAGE UDAY KIRAN.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

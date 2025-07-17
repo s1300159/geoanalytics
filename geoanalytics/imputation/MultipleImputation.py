@@ -14,6 +14,7 @@
 #
 #             mi.save('MultipleImputation.csv')
 #
+
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -50,6 +51,7 @@ class MultipleImputation:
 
     :**Attributes**:    - **df** (*pd.DataFrame*) -- The input data with 'x', 'y' coordinates and feature columns.
                         - **imputedDF** (*pd.DataFrame*) -- DataFrame containing 'x', 'y', and imputed values.
+
     **Execution methods**
 
     **Calling from a Python program**
@@ -150,3 +152,5 @@ class MultipleImputation:
                 print(f"Failed to save labels: {e}")
         else:
             print("No imputed data to save. Run impute() first")
+
+

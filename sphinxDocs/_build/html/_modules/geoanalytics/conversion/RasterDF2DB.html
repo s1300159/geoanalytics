@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>geoanalytics.conversion.RasterDF2DB &mdash; geoanalytics 2025.12.06 documentation</title>
+  <title>geoanalytics.conversion.RasterDF2DB &mdash; geoanalytics 2025.07.17 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css" />
 
@@ -71,27 +71,138 @@
            <div itemprop="articleBody">
              
   <h1>Source code for geoanalytics.conversion.RasterDF2DB</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span></span><span class="c1"># RasterDF2DB converts a raster-based DataFrame (with coordinates and band values) into various types of structured databases for spatio-temporal data mining tasks.</span>
+<span class="c1">#</span>
+<span class="c1"># **Importing and Using the RasterDF2DB Class in a Python Program**</span>
+<span class="c1">#</span>
+<span class="c1">#         import pandas as pd</span>
+<span class="c1">#</span>
+<span class="c1">#         from geoanalytics.conversion import RasterDF2DB</span>
+<span class="c1">#</span>
+<span class="c1">#         df = pd.read_csv(&#39;output.csv&#39;)</span>
+<span class="c1">#</span>
+<span class="c1">#         converter = RasterDF2DB(dataframe=df)</span>
+<span class="c1">#</span>
+<span class="c1">#         converter.prepareTransactionalDataframe()</span>
+<span class="c1">#</span>
+<span class="c1">#         converter.convertToTransactionalDB(DBname=&#39;transactionDB.csv&#39;, condition=&#39;&gt;=&#39;, thresholdValue=4000)</span>
+<span class="c1">#</span>
+<span class="c1">#         converter.convertToTemporalDB(DBname=&#39;temporalDB.csv&#39;, condition=&#39;&gt;=&#39;, thresholdValue=4000)</span>
+<span class="c1">#</span>
+<span class="c1">#         converter.convertToUtilityDB(DBname=&#39;utilityDB.csv&#39;)</span>
+<span class="c1">#</span>
+<span class="c1">#         converter.convertToGeoReferencedTransactionalDB(DBname=&#39;geoTransactionDB.csv&#39;, condition=&#39;&gt;=&#39;, thresholdValue=4000)</span>
+<span class="c1">#</span>
+<span class="c1">#         converter.convertToGeoReferencedTemporalDB(DBname=&#39;geoTemporalDB.csv&#39;, condition=&#39;&gt;=&#39;, thresholdValue=4000)</span>
+<span class="c1">#</span>
+<span class="c1">#         converter.convertToUncertainTransactionalDB(DBname=&#39;uncertainDB.csv&#39;, condition=&#39;&gt;=&#39;, thresholdValue=4000)</span>
+<span class="c1">#</span>
+<span class="c1">#         converter.convertToMultipleTimeSeries(DBname=&#39;multiTimeSeriesDB.csv&#39;, condition=&#39;&gt;=&#39;, thresholdValue=4000, interval=2)</span>
+<span class="c1">#</span>
+
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Copyright (C)  2022 Rage Uday Kiran</span>
+
+<span class="s2">     This program is free software: you can redistribute it and/or modify</span>
+<span class="s2">     it under the terms of the GNU General Public License as published by</span>
+<span class="s2">     the Free Software Foundation, either version 3 of the License, or</span>
+<span class="s2">     (at your option) any later version.</span>
+
+<span class="s2">     This program is distributed in the hope that it will be useful,</span>
+<span class="s2">     but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="s2">     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="s2">     GNU General Public License for more details.</span>
+
+<span class="s2">     You should have received a copy of the GNU General Public License</span>
+<span class="s2">     along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">geoanalytics.conversion</span> <span class="kn">import</span> <span class="n">DF2DB</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
 
 <div class="viewcode-block" id="RasterDF2DB"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB">[docs]</a><span class="k">class</span> <span class="nc">RasterDF2DB</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **About this algorithm**</span>
+
+<span class="sd">    :**Description**: RasterDF2DB is a converter that takes a raster-format DataFrame (x, y, bands) and transforms it into various spatio-temporal database formats using DF2DB methods.</span>
+
+<span class="sd">    :**Parameters**:    - **dataframe** (*pandas.DataFrame*): Input DataFrame with columns [x, y, band1, band2, ..., bandN].</span>
+
+<span class="sd">    :**Attributes**:    - **df** (*DataFrame*): A copy of the input DataFrame with renamed columns.</span>
+<span class="sd">                        - **transactionDF** (*DataFrame*): Transposed DataFrame used for database conversion.</span>
+
+<span class="sd">    **Execution methods**</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">            import pandas as pd</span>
+
+<span class="sd">            from geoanalytics.conversion import RasterDF2DB</span>
+
+<span class="sd">            df = pd.read_csv(&#39;output.csv&#39;)</span>
+
+<span class="sd">            converter = RasterDF2DB(dataframe=df)</span>
+
+<span class="sd">            converter.prepareTransactionalDataframe()</span>
+
+<span class="sd">            converter.convertToTransactionalDB(DBname=&#39;transactionDB.csv&#39;, condition=&#39;&gt;=&#39;, thresholdValue=4000)</span>
+
+<span class="sd">            converter.convertToTemporalDB(DBname=&#39;temporalDB.csv&#39;, condition=&#39;&gt;=&#39;, thresholdValue=4000)</span>
+
+<span class="sd">            converter.convertToUtilityDB(DBname=&#39;utilityDB.csv&#39;)</span>
+
+<span class="sd">            converter.convertToGeoReferencedTransactionalDB(DBname=&#39;geoTransactionDB.csv&#39;, condition=&#39;&gt;=&#39;, thresholdValue=4000)</span>
+
+<span class="sd">            converter.convertToGeoReferencedTemporalDB(DBname=&#39;geoTemporalDB.csv&#39;, condition=&#39;&gt;=&#39;, thresholdValue=4000)</span>
+
+<span class="sd">            converter.convertToUncertainTransactionalDB(DBname=&#39;uncertainDB.csv&#39;, condition=&#39;&gt;=&#39;, thresholdValue=4000)</span>
+
+<span class="sd">            converter.convertToMultipleTimeSeries(DBname=&#39;multiTimeSeriesDB.csv&#39;, condition=&#39;&gt;=&#39;, thresholdValue=4000, interval=2)</span>
+
+
+<span class="sd">    **Credits**</span>
+
+<span class="sd">    This implementation was created and revised  under the guidance of Professor Rage Uday Kiran.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataframe</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor to initialize the RasterDF2DB object.</span>
+
+<span class="sd">        :param dataframe: A pandas DataFrame containing x, y coordinates and raster band values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">transactionDF</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="RasterDF2DB.prepareTransactionalDataframe"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.prepareTransactionalDataframe">[docs]</a>    <span class="k">def</span> <span class="nf">prepareTransactionalDataframe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Prepares the transactional format of the DataFrame.</span>
+
+<span class="sd">        Converts [x, y, band1, band2, ..., bandN] format into a transposed format where each spatial point becomes a column and rows represent time intervals.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:]</span>
-        <span class="n">point_labels</span> <span class="o">=</span> <span class="s1">&#39;POINT(&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+        <span class="n">point_labels</span> <span class="o">=</span> <span class="s1">&#39;Point(&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
         <span class="n">newDF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-        <span class="n">newDF</span><span class="p">[</span><span class="s1">&#39;new_col&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">point_labels</span>
+        <span class="n">newDF</span><span class="p">[</span><span class="s1">&#39;Band&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">point_labels</span>
         <span class="n">newDF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">newDF</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">newDF</span> <span class="o">=</span> <span class="n">newDF</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;new_col&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">newDF</span> <span class="o">=</span> <span class="n">newDF</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Band&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
         <span class="n">newDF</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">newDF</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">transactionDF</span> <span class="o">=</span> <span class="n">newDF</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prepared transactional DataFrame:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">transactionDF</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">transactionDF</span></div>
 
-<div class="viewcode-block" id="RasterDF2DB.convertToTransactionalDB"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToTransactionalDB">[docs]</a>    <span class="k">def</span> <span class="nf">convertToTransactionalDB</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DBname</span><span class="o">=</span><span class="s1">&#39;transactionalDB.csv&#39;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="o">=</span><span class="mi">4000</span><span class="p">):</span>
+<div class="viewcode-block" id="RasterDF2DB.convertToTransactionalDB"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToTransactionalDB">[docs]</a>    <span class="k">def</span> <span class="nf">convertToTransactionalDB</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DBname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">condition</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Converts the transactional DataFrame into a basic transactional database format.</span>
+
+<span class="sd">        :param DBname: Output file name for the database.</span>
+<span class="sd">        :param condition: Filtering condition (e.g., &#39;&gt;=&#39;).</span>
+<span class="sd">        :param thresholdValue: Value threshold to consider.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">obj</span> <span class="o">=</span> <span class="n">DF2DB</span><span class="o">.</span><span class="n">DF2DB</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transactionDF</span><span class="p">)</span>
         <span class="n">obj</span><span class="o">.</span><span class="n">convert2TransactionalDatabase</span><span class="p">(</span>
             <span class="n">oFile</span><span class="o">=</span><span class="n">DBname</span><span class="p">,</span>
@@ -100,7 +211,15 @@
         <span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved transaction DB to: </span><span class="si">{</span><span class="n">DBname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RasterDF2DB.convertToTemporalDB"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToTemporalDB">[docs]</a>    <span class="k">def</span> <span class="nf">convertToTemporalDB</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DBname</span><span class="o">=</span><span class="s1">&#39;temporalDB.csv&#39;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="o">=</span><span class="mi">4000</span><span class="p">):</span>
+<div class="viewcode-block" id="RasterDF2DB.convertToTemporalDB"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToTemporalDB">[docs]</a>    <span class="k">def</span> <span class="nf">convertToTemporalDB</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DBname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">condition</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Converts to a temporal database format.</span>
+
+<span class="sd">        :param DBname: Output file name.</span>
+<span class="sd">        :param condition: Filtering condition.</span>
+<span class="sd">        :param thresholdValue: Threshold value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">obj</span> <span class="o">=</span> <span class="n">DF2DB</span><span class="o">.</span><span class="n">DF2DB</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transactionDF</span><span class="p">)</span>
         <span class="n">obj</span><span class="o">.</span><span class="n">convert2TemporalDatabase</span><span class="p">(</span>
             <span class="n">oFile</span><span class="o">=</span><span class="n">DBname</span><span class="p">,</span>
@@ -109,14 +228,28 @@
         <span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved temporal DB to: </span><span class="si">{</span><span class="n">DBname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RasterDF2DB.convertToUtilityDB"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToUtilityDB">[docs]</a>    <span class="k">def</span> <span class="nf">convertToUtilityDB</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DBname</span><span class="o">=</span><span class="s1">&#39;UtilityDB.csv&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="RasterDF2DB.convertToUtilityDB"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToUtilityDB">[docs]</a>    <span class="k">def</span> <span class="nf">convertToUtilityDB</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DBname</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Converts to a utility database format (with weights).</span>
+
+<span class="sd">        :param DBname: Output file name.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">obj</span> <span class="o">=</span> <span class="n">DF2DB</span><span class="o">.</span><span class="n">DF2DB</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transactionDF</span><span class="p">)</span>
         <span class="n">obj</span><span class="o">.</span><span class="n">convert2UtilityDatabase</span><span class="p">(</span>
             <span class="n">oFile</span><span class="o">=</span><span class="n">DBname</span>
         <span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved utility DB to: </span><span class="si">{</span><span class="n">DBname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RasterDF2DB.convertToGeoReferencedTransactionalDB"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToGeoReferencedTransactionalDB">[docs]</a>    <span class="k">def</span> <span class="nf">convertToGeoReferencedTransactionalDB</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DBname</span><span class="o">=</span><span class="s1">&#39;geoReferencedTransactionalDatabase.csv&#39;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="o">=</span><span class="mi">4000</span><span class="p">):</span>
+<div class="viewcode-block" id="RasterDF2DB.convertToGeoReferencedTransactionalDB"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToGeoReferencedTransactionalDB">[docs]</a>    <span class="k">def</span> <span class="nf">convertToGeoReferencedTransactionalDB</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DBname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">condition</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Converts to a geo-referenced transactional database format.</span>
+
+<span class="sd">        :param DBname: Output file name.</span>
+<span class="sd">        :param condition: Filtering condition.</span>
+<span class="sd">        :param thresholdValue: Threshold value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">obj</span> <span class="o">=</span> <span class="n">DF2DB</span><span class="o">.</span><span class="n">DF2DB</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transactionDF</span><span class="p">)</span>
         <span class="n">obj</span><span class="o">.</span><span class="n">convert2geoReferencedTransactionalDatabase</span><span class="p">(</span>
             <span class="n">oFile</span><span class="o">=</span><span class="n">DBname</span><span class="p">,</span>
@@ -125,7 +258,15 @@
         <span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved geo-referenced transaction DB to: </span><span class="si">{</span><span class="n">DBname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RasterDF2DB.convertToGeoReferencedTemporalDB"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToGeoReferencedTemporalDB">[docs]</a>    <span class="k">def</span> <span class="nf">convertToGeoReferencedTemporalDB</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DBname</span><span class="o">=</span><span class="s1">&#39;geoReferencedTemporalDatabase.csv&#39;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="o">=</span><span class="mi">4000</span><span class="p">):</span>
+<div class="viewcode-block" id="RasterDF2DB.convertToGeoReferencedTemporalDB"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToGeoReferencedTemporalDB">[docs]</a>    <span class="k">def</span> <span class="nf">convertToGeoReferencedTemporalDB</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DBname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">condition</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Converts to a geo-referenced temporal database format.</span>
+
+<span class="sd">        :param DBname: Output file name.</span>
+<span class="sd">        :param condition: Filtering condition.</span>
+<span class="sd">        :param thresholdValue: Threshold value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">obj</span> <span class="o">=</span> <span class="n">DF2DB</span><span class="o">.</span><span class="n">DF2DB</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transactionDF</span><span class="p">)</span>
         <span class="n">obj</span><span class="o">.</span><span class="n">convert2geoReferencedTemporalDatabase</span><span class="p">(</span>
             <span class="n">oFile</span><span class="o">=</span><span class="n">DBname</span><span class="p">,</span>
@@ -134,7 +275,15 @@
         <span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved geo-referenced temporal DB to: </span><span class="si">{</span><span class="n">DBname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RasterDF2DB.convertToUncertainTransactionalDB"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToUncertainTransactionalDB">[docs]</a>    <span class="k">def</span> <span class="nf">convertToUncertainTransactionalDB</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DBname</span><span class="o">=</span><span class="s1">&#39;UncertainTransactionalDB.csv&#39;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="o">=</span><span class="mi">4000</span><span class="p">):</span>
+<div class="viewcode-block" id="RasterDF2DB.convertToUncertainTransactionalDB"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToUncertainTransactionalDB">[docs]</a>    <span class="k">def</span> <span class="nf">convertToUncertainTransactionalDB</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DBname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">condition</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Converts to an uncertain transactional database format (for probabilistic scenarios).</span>
+
+<span class="sd">        :param DBname: Output file name.</span>
+<span class="sd">        :param condition: Filtering condition.</span>
+<span class="sd">        :param thresholdValue: Threshold value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">obj</span> <span class="o">=</span> <span class="n">DF2DB</span><span class="o">.</span><span class="n">DF2DB</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transactionDF</span><span class="p">)</span>
         <span class="n">obj</span><span class="o">.</span><span class="n">convert2UncertainTransactionalDatabase</span><span class="p">(</span>
             <span class="n">oFile</span><span class="o">=</span><span class="n">DBname</span><span class="p">,</span>
@@ -143,7 +292,16 @@
         <span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved uncertain transaction DB to: </span><span class="si">{</span><span class="n">DBname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RasterDF2DB.convertToMultipleTimeSeries"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToMultipleTimeSeries">[docs]</a>    <span class="k">def</span> <span class="nf">convertToMultipleTimeSeries</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DBname</span><span class="o">=</span><span class="s1">&#39;MultipleTimeSeriesDB.csv&#39;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span> <span class="n">interval</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
+<div class="viewcode-block" id="RasterDF2DB.convertToMultipleTimeSeries"><a class="viewcode-back" href="../../../geoanalytics.conversion.html#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToMultipleTimeSeries">[docs]</a>    <span class="k">def</span> <span class="nf">convertToMultipleTimeSeries</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DBname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">condition</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="n">interval</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Converts data into multiple time series format.</span>
+
+<span class="sd">        :param DBname: Output file name.</span>
+<span class="sd">        :param condition: Filtering condition.</span>
+<span class="sd">        :param thresholdValue: Threshold value.</span>
+<span class="sd">        :param interval: Interval of time steps to be used.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">obj</span> <span class="o">=</span> <span class="n">DF2DB</span><span class="o">.</span><span class="n">DF2DB</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transactionDF</span><span class="p">)</span>
         <span class="n">obj</span><span class="o">.</span><span class="n">convert2MultipleTimeSeries</span><span class="p">(</span>
             <span class="n">oFile</span><span class="o">=</span><span class="n">DBname</span><span class="p">,</span>
@@ -161,7 +319,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Vanitha Kattumuri.</p>
+    <p>&#169; Copyright 2025, RAGE UDAY KIRAN.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

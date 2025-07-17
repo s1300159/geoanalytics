@@ -121,6 +121,7 @@ class KMeans:
     def elbowMethod(self):
         """
         Plots the elbow graph to help determine the optimal number of clusters (k).
+
         Uses WCSS (Within-Cluster Sum of Squares) and excludes 'x', 'y' from the computation.
         """
         wcss = []
@@ -142,7 +143,7 @@ class KMeans:
         Applies KMeans clustering to the dataset, excluding 'x' and 'y', and returns labeled data and cluster centers.
 
         Returns:
-        --------
+
         labels : pandas.DataFrame
             DataFrame containing 'x', 'y', and the predicted cluster labels.
         centers : numpy.ndarray
@@ -185,3 +186,4 @@ class KMeans:
                 print(f"Failed to save cluster centers: {e}")
         else:
             print("No cluster centers to save. Please execute run() method first.")
+

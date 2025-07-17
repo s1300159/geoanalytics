@@ -1,7 +1,6 @@
 # findNeighboursUsingGeodesic is a code used to create a neighbourhood file using Geodesic distance.
 #
 #  **Importing this algorithm into a python program**
-# --------------------------------------------------------
 #
 #     from PAMI.extras.neighbours import findNeighboursUsingGeodesic as db
 #
@@ -44,23 +43,26 @@ class FindNeighboursUsingGeodesic:
 
         :param iFile : file
             Input file name or path of the input file
+
         :param maxDist : float
             The user can specify maxDist in Km(Kilometers).
             This program find pairs of values whose Geodesic distance is less than or equal to maxDistace
             and store the pairs.
+
         :param  sep: str :
-                    This variable is used to distinguish items from one another in a transaction. The default seperator is tab space. However, the users can override their default separator.
+            This variable is used to distinguish items from one another in a transaction. The default seperator is tab space. However, the users can override their default separator.
 
 
     :Methods:
 
         mine()
             find and store the pairs of values whose Geodesic distance is less than or equal to maxDistace.
+
         getFileName()
             This function returns output file name.
 
     **Importing this algorithm into a python program**
-    --------------------------------------------------------
+
     .. code-block:: python
 
             from PAMI.extras.neighbours import findNeighboursUsingGeodesic as db
@@ -159,3 +161,4 @@ class FindNeighboursUsingGeodesic:
 
 if __name__ == "__main__":
     obj = FindNeighboursUsingGeodesic(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+
