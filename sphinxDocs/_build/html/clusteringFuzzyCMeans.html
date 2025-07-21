@@ -174,17 +174,19 @@ allowing partial membership instead of a hard assignment to a single cluster.</p
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.clustering.FuzzyCMeans.FuzzyCMeans.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/clustering/FuzzyCMeans.html#FuzzyCMeans.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.clustering.FuzzyCMeans.FuzzyCMeans.run" title="Permalink to this definition"></a></dt>
-<dd><p>Performs fuzzy clustering on data.
--It excludes the ‘x’ and ‘y’ columns during clustering, and uses the remaining columns.
--After clustering, it adds the cluster label (based on the highest membership score) back to the original coordinates
-:param n_clusters: Number of clusters to form (default is 3).
-:return: A tuple containing:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>A DataFrame with ‘x’, ‘y’, and cluster labels for each data point (based on maximum membership).</p></li>
-<li><p>A NumPy array with coordinates of the cluster centers.</p></li>
-</ul>
-</div></blockquote>
+<dd><p>Performs fuzzy clustering on data.</p>
+<p>-It excludes the ‘x’ and ‘y’ columns during clustering, and uses the remaining columns.
+-After clustering, it adds the cluster label (based on the highest membership score) back to the original coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n_clusters</strong> – Number of clusters to form (default is 3).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing:
+- A DataFrame with ‘x’, ‘y’, and cluster labels for each data point (based on maximum membership).
+- A NumPy array with coordinates of the cluster centers.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">

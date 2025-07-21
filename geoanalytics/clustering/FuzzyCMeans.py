@@ -125,9 +125,12 @@ class FuzzyCMeans:
     def run(self, n_clusters=4):
         """
         Performs fuzzy clustering on data.
+
         -It excludes the 'x' and 'y' columns during clustering, and uses the remaining columns.
         -After clustering, it adds the cluster label (based on the highest membership score) back to the original coordinates
+
         :param n_clusters: Number of clusters to form (default is 3).
+
         :return: A tuple containing:
                  - A DataFrame with 'x', 'y', and cluster labels for each data point (based on maximum membership).
                  - A NumPy array with coordinates of the cluster centers.

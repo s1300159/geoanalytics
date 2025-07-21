@@ -215,9 +215,12 @@
 <div class="viewcode-block" id="FuzzyCMeans.run"><a class="viewcode-back" href="../../../geoanalytics.clustering.html#geoanalytics.clustering.FuzzyCMeans.FuzzyCMeans.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Performs fuzzy clustering on data.</span>
+
 <span class="sd">        -It excludes the &#39;x&#39; and &#39;y&#39; columns during clustering, and uses the remaining columns.</span>
 <span class="sd">        -After clustering, it adds the cluster label (based on the highest membership score) back to the original coordinates</span>
+
 <span class="sd">        :param n_clusters: Number of clusters to form (default is 3).</span>
+
 <span class="sd">        :return: A tuple containing:</span>
 <span class="sd">                 - A DataFrame with &#39;x&#39;, &#39;y&#39;, and cluster labels for each data point (based on maximum membership).</span>
 <span class="sd">                 - A NumPy array with coordinates of the cluster centers.</span>
