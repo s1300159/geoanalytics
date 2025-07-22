@@ -71,7 +71,6 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">RelativeFrequentPatternMining</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PMRelativeHighUtilityPatternMining.html">RelativeHighUtilityPatternMining</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PMStablePeriodicPatternMining.html">StablePeriodicPatternMining</a></li>
-<li class="toctree-l3"><a class="reference internal" href="PMfrequentSpatialPatternMining.html">frequentSpatialPatternMining</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
@@ -113,10 +112,54 @@
 <dt class="sig sig-object py" id="geoanalytics.patternMining.RelativeFrequentPatternMining.RelativeFrequentPatternMining">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.patternMining.RelativeFrequentPatternMining.</span></span><span class="sig-name descname"><span class="pre">RelativeFrequentPatternMining</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/patternMining/RelativeFrequentPatternMining.html#RelativeFrequentPatternMining"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.patternMining.RelativeFrequentPatternMining.RelativeFrequentPatternMining" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMiner</span></code></p>
+<p><strong>About this algorithm</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This module implements the <strong>RSFPGrowth algorithm</strong> for mining <strong>relative frequent patterns</strong>
+from transactional databases. The algorithm discovers itemsets whose relative support
+exceeds a given minimum relative support threshold.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><cite>inputFile</cite> (<em>str</em>): Path to the transactional database file.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputFile</strong> (<em>str</em>): The transactional input file provided during object instantiation.</p></li>
+<li><p><strong>miner</strong> (<em>RSFPGrowth</em>): Instance of the RSFPGrowth algorithm from the PAMI library.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Execution methods</strong></p>
+<p><strong>Calling from a Python program</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geoanalytics.patternMining</span> <span class="kn">import</span> <span class="n">RelativeFrequentPatternMining</span>
+
+<span class="n">miner</span> <span class="o">=</span> <span class="n">RelativeFrequentPatternMining</span><span class="p">(</span><span class="s2">&quot;data/input.txt&quot;</span><span class="p">)</span>
+
+<span class="n">miner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">minSupport</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">minRS</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Credits</strong></p>
+<blockquote>
+<div><p>Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.</p>
+</div></blockquote>
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.patternMining.RelativeFrequentPatternMining.RelativeFrequentPatternMining.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">minSupport</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minRS</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/patternMining/RelativeFrequentPatternMining.html#RelativeFrequentPatternMining.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.patternMining.RelativeFrequentPatternMining.RelativeFrequentPatternMining.run" title="Permalink to this definition"></a></dt>
-<dd><p>Run the mining algorithm with specific parameters.</p>
+<dd><p>Executes the RSFPGrowth algorithm to mine relative frequent patterns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>minSupport</strong> (<em>int</em>) – Minimum support threshold for frequent itemsets.</p></li>
+<li><p><strong>minRS</strong> (<em>float</em>) – Minimum relative support threshold.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Output:</dt><dd><p>Prints the discovered relative frequent patterns to the console.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

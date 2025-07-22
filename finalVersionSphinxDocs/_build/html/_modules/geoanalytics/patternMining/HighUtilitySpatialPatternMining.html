@@ -70,7 +70,18 @@
            <div itemprop="articleBody">
              
   <h1>Source code for geoanalytics.patternMining.HighUtilitySpatialPatternMining</h1><div class="highlight"><pre>
-<span></span><span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span></span><span class="c1"># HighUtilitySpatialPatternMining Class for Mining High Utility Spatial Patterns</span>
+<span class="c1">#</span>
+<span class="c1"># **Importing and Using the HighUtilitySpatialPatternMining Class in a Python Program**</span>
+<span class="c1">#</span>
+<span class="c1">#             from geoanalytics.patternMining import HighUtilitySpatialPatternMining</span>
+<span class="c1">#</span>
+<span class="c1">#             miner = HighUtilitySpatialPatternMining(&quot;data/input.txt&quot;)</span>
+<span class="c1">#</span>
+<span class="c1">#             miner.run(minUtil=50, nFile=&quot;data/neighbor.txt&quot;)</span>
+<span class="c1">#</span>
+
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Copyright (C)  2022 Rage Uday Kiran</span>
 
 <span class="s2">     This program is free software: you can redistribute it and/or modify</span>
@@ -93,10 +104,59 @@
 <span class="kn">from</span> <span class="nn">.abstract</span> <span class="kn">import</span> <span class="n">PatternMiner</span>
 
 <div class="viewcode-block" id="HighUtilitySpatialPatternMining"><a class="viewcode-back" href="../../../PMHighUtilitySpatialPatternMining.html#geoanalytics.patternMining.HighUtilitySpatialPatternMining.HighUtilitySpatialPatternMining">[docs]</a><span class="k">class</span> <span class="nc">HighUtilitySpatialPatternMining</span><span class="p">(</span><span class="n">PatternMiner</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **About this algorithm**</span>
+
+<span class="sd">    :**Description**:</span>
+<span class="sd">        This module implements the **HDSHUIM algorithm** for mining **high utility spatial patterns**</span>
+<span class="sd">        from utility transactional databases augmented with spatial neighborhood information.</span>
+<span class="sd">        The algorithm integrates utility-based pattern mining with spatial proximity</span>
+<span class="sd">        defined by a neighborhood file to discover spatially meaningful high utility patterns.</span>
+
+<span class="sd">    :**Parameters**:</span>
+<span class="sd">        - `inputFile` (*str*): Path to the utility transactional database file.</span>
+<span class="sd">        - `nFile` (*str*): Path to the neighborhood file specifying spatial relationships.</span>
+
+<span class="sd">    :**Attributes**:</span>
+<span class="sd">        - **inputFile** (*str*): The utility transactional input file provided during object instantiation.</span>
+<span class="sd">        - **miner** (*HDSHUIM*): Instance of the HDSHUIM algorithm from the PAMI library.</span>
+
+<span class="sd">    **Execution methods**</span>
+
+<span class="sd">    **Calling from a Python program**</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        from geoanalytics.patternMining import HighUtilitySpatialPatternMining</span>
+
+<span class="sd">        miner = HighUtilitySpatialPatternMining(&quot;data/input.txt&quot;)</span>
+
+<span class="sd">        miner.run(minUtil=50, nFile=&quot;data/neighbor.txt&quot;)</span>
+
+<span class="sd">    **Credits**</span>
+
+<span class="sd">     Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">_create_database</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Internal method to initialize the utility transactional database.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            UtilityDatabase: Utility transactional database object from the PAMI library.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">UtilityDatabase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputFile</span><span class="p">)</span>
 
 <div class="viewcode-block" id="HighUtilitySpatialPatternMining.run"><a class="viewcode-back" href="../../../PMHighUtilitySpatialPatternMining.html#geoanalytics.patternMining.HighUtilitySpatialPatternMining.HighUtilitySpatialPatternMining.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minUtil</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">nFile</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Executes the HDSHUIM algorithm to mine high utility spatial patterns.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            minUtil (int): Minimum utility threshold to identify high utility patterns.</span>
+<span class="sd">            nFile (str): Path to the neighborhood file containing spatial proximity information.</span>
+
+<span class="sd">        Output:</span>
+<span class="sd">            Prints the discovered high utility spatial patterns to the console.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">miner</span> <span class="o">=</span> <span class="n">HDSHUIM</span><span class="o">.</span><span class="n">HDSHUIM</span><span class="p">(</span><span class="n">iFile</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inputFile</span><span class="p">,</span> <span class="n">minUtil</span><span class="o">=</span><span class="n">minUtil</span><span class="p">,</span> <span class="n">nFile</span><span class="o">=</span><span class="n">nFile</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">miner</span><span class="o">.</span><span class="n">mine</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">miner</span><span class="o">.</span><span class="n">printResults</span><span class="p">()</span></div></div>

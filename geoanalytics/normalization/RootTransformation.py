@@ -48,7 +48,7 @@ from sklearn.preprocessing import RobustScaler
 
 class RootTransformation:
     """
-    **About this module**
+    **About this algorithm**
 
     :**Description**:
         RootTransformation applies a root-based transformation to all feature values

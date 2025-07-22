@@ -71,7 +71,6 @@
 <li class="toctree-l3"><a class="reference internal" href="PMRelativeFrequentPatternMining.html">RelativeFrequentPatternMining</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PMRelativeHighUtilityPatternMining.html">RelativeHighUtilityPatternMining</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PMStablePeriodicPatternMining.html">StablePeriodicPatternMining</a></li>
-<li class="toctree-l3"><a class="reference internal" href="PMfrequentSpatialPatternMining.html">frequentSpatialPatternMining</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
@@ -113,10 +112,54 @@
 <dt class="sig sig-object py" id="geoanalytics.patternMining.CoveragePatternMining.CoveragePatternMining">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.patternMining.CoveragePatternMining.</span></span><span class="sig-name descname"><span class="pre">CoveragePatternMining</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/patternMining/CoveragePatternMining.html#CoveragePatternMining"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.patternMining.CoveragePatternMining.CoveragePatternMining" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMiner</span></code></p>
+<p><strong>About this algorithm</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This module implements the <strong>CMine algorithm</strong> for discovering <strong>coverage patterns</strong> in transactional databases.
+Coverage pattern mining identifies itemsets that not only occur frequently but also cover a significant portion
+of the database based on correlation and coverage-based quality metrics.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><cite>inputFile</cite> (<em>str</em>): Path to the input transactional database file.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputFile</strong> (<em>str</em>): The path to the transactional database file passed during object creation.</p></li>
+<li><p><strong>miner</strong> (<em>CMine</em>): Instance of the CMine algorithm class from the PAMI library.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Execution methods</strong></p>
+<p><strong>Calling from a Python program</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geoanalytics.patternMining</span> <span class="kn">import</span> <span class="n">CoveragePatternMining</span>
+
+<span class="n">miner</span> <span class="o">=</span> <span class="n">CoveragePatternMining</span><span class="p">(</span><span class="s2">&quot;data/input.txt&quot;</span><span class="p">)</span>
+
+<span class="n">miner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">minSupport</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">minRF</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">minCS</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">maxOR</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Credits</strong></p>
+<p>Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.patternMining.CoveragePatternMining.CoveragePatternMining.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">minSupport</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minRF</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minCS</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxOR</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/patternMining/CoveragePatternMining.html#CoveragePatternMining.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.patternMining.CoveragePatternMining.CoveragePatternMining.run" title="Permalink to this definition"></a></dt>
-<dd><p>Run the mining algorithm with specific parameters.</p>
+<dd><p>Runs the CMine algorithm to mine coverage patterns from the transactional dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>minSupport</strong> (<em>int</em>) – Minimum support threshold for itemset frequency.</p></li>
+<li><p><strong>minRF</strong> (<em>float</em><em> or </em><em>int</em>) – Minimum representative frequency threshold.</p></li>
+<li><p><strong>minCS</strong> (<em>float</em><em> or </em><em>int</em>) – Minimum coverage strength threshold.</p></li>
+<li><p><strong>maxOR</strong> (<em>float</em><em> or </em><em>int</em>) – Maximum overlap ratio allowed between itemsets.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Output:</dt><dd><p>Prints the discovered coverage patterns to the console.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

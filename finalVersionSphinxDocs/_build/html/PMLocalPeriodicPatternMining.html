@@ -71,7 +71,6 @@
 <li class="toctree-l3"><a class="reference internal" href="PMRelativeFrequentPatternMining.html">RelativeFrequentPatternMining</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PMRelativeHighUtilityPatternMining.html">RelativeHighUtilityPatternMining</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PMStablePeriodicPatternMining.html">StablePeriodicPatternMining</a></li>
-<li class="toctree-l3"><a class="reference internal" href="PMfrequentSpatialPatternMining.html">frequentSpatialPatternMining</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
@@ -113,10 +112,56 @@
 <dt class="sig sig-object py" id="geoanalytics.patternMining.LocalPeriodicPatternMining.LocalPeriodicPatternMining">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.patternMining.LocalPeriodicPatternMining.</span></span><span class="sig-name descname"><span class="pre">LocalPeriodicPatternMining</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/patternMining/LocalPeriodicPatternMining.html#LocalPeriodicPatternMining"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.patternMining.LocalPeriodicPatternMining.LocalPeriodicPatternMining" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMiner</span></code></p>
+<p><strong>About this algorithm</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This module implements the <strong>LPPGrowth algorithm</strong> for mining <strong>local periodic patterns</strong>
+from temporal transactional datasets. The algorithm identifies patterns with periodic
+recurrence within local temporal windows, controlled by maximum periodicity,
+maximum sub-periodicity, and minimum duration thresholds.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><cite>inputFile</cite> (<em>str</em>): Path to the temporal transactional database file.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputFile</strong> (<em>str</em>): The temporal transactional input file provided during object instantiation.</p></li>
+<li><p><strong>miner</strong> (<em>LPPGrowth</em>): Instance of the LPPGrowth algorithm from the PAMI library.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Execution methods</strong></p>
+<p><strong>Calling from a Python program</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geoanalytics.patternMining</span> <span class="kn">import</span> <span class="n">LocalPeriodicPatternMining</span>
+
+<span class="n">miner</span> <span class="o">=</span> <span class="n">LocalPeriodicPatternMining</span><span class="p">(</span><span class="s2">&quot;data/input.txt&quot;</span><span class="p">)</span>
+
+<span class="n">miner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">maxPer</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">maxSoPer</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">minDur</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Credits</strong></p>
+<blockquote>
+<div><p>Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.</p>
+</div></blockquote>
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.patternMining.LocalPeriodicPatternMining.LocalPeriodicPatternMining.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">maxPer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxSoPer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minDur</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/patternMining/LocalPeriodicPatternMining.html#LocalPeriodicPatternMining.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.patternMining.LocalPeriodicPatternMining.LocalPeriodicPatternMining.run" title="Permalink to this definition"></a></dt>
-<dd><p>Run the mining algorithm with specific parameters.</p>
+<dd><p>Executes the LPPGrowth algorithm to mine local periodic patterns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>maxPer</strong> (<em>int</em>) – Maximum periodicity threshold controlling pattern recurrence interval.</p></li>
+<li><p><strong>maxSoPer</strong> (<em>int</em>) – Maximum sub-periodicity threshold controlling pattern sub-intervals.</p></li>
+<li><p><strong>minDur</strong> (<em>int</em>) – Minimum duration threshold specifying the minimal length of the periodic pattern.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Output:</dt><dd><p>Prints the discovered local periodic patterns to the console.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

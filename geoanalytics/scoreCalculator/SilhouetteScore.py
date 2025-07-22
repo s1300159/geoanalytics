@@ -37,7 +37,7 @@ from sklearn.metrics import silhouette_score
 
 class SilhouetteScore:
     """
-    **About this module**
+    **About this algorithm**
 
     :**Description**:
         SilhouetteScore evaluates how well-separated the top-k retrieved data points are from the training dataset

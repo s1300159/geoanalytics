@@ -25,7 +25,6 @@ Pattern Mining
    PMRelativeFrequentPatternMining
    PMRelativeHighUtilityPatternMining
    PMStablePeriodicPatternMining
-   PMfrequentSpatialPatternMining
 
 
 

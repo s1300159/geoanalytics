@@ -49,7 +49,7 @@ from sklearn.preprocessing import RobustScaler
 
 class RobustScaling:
     """
-    **About this module**
+    **About this algorithm**
 
     :**Description**:
         Robust Scaling normalizes features using statistics that are robust to outliers

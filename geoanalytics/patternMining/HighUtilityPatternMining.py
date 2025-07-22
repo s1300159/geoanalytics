@@ -1,3 +1,14 @@
+# HighUtilityPatternMining Class for Mining High Utility Patterns
+#
+# **Importing and Using the HighUtilityPatternMining Class in a Python Program**
+#
+#             from geoanalytics.patternMining import HighUtilityPatternMining
+#
+#             miner = HighUtilityPatternMining("data/input.txt")
+#
+#             miner.run(minUtil=50)
+#
+
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -21,10 +32,56 @@ from PAMI.highUtilityPattern.basic import EFIM
 from .abstract import PatternMiner
 
 class HighUtilityPatternMining(PatternMiner):
+    """
+   **About this algorithm**
+
+   :**Description**:
+       This module implements the **EFIM algorithm** for mining **high utility patterns**
+       from utility transactional databases. Unlike traditional frequent pattern mining, this method
+       focuses solely on the utility aspect, discovering itemsets with utility above the specified threshold.
+
+   :**Parameters**:
+       - `inputFile` (*str*): Path to the input utility transactional database file.
+
+   :**Attributes**:
+       - **inputFile** (*str*): The utility transactional input file provided during object initialization.
+       - **miner** (*EFIM*): Instance of the EFIM algorithm from the PAMI library.
+
+   **Execution methods**
+
+   **Calling from a Python program**
+
+   .. code-block:: python
+
+       from geoanalytics.patternMining import HighUtilityPatternMining
+
+       miner = HighUtilityPatternMining("data/input.txt")
+
+       miner.run(minUtil=50)
+
+   **Credits**
+
+    Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.
+   """
     def _create_database(self):
+        """
+        Internal method to initialize the utility transactional database.
+
+        Returns:
+            UtilityDatabase: Utility transactional database object from the PAMI library.
+        """
         return UtilityDatabase(self.inputFile)
 
     def run(self, minUtil: int):
+        """
+        Executes the EFIM algorithm to mine high utility patterns.
+
+        Args:
+            minUtil (int): Minimum utility threshold to identify high utility patterns.
+
+        Output:
+            Prints the discovered high utility patterns to the console.
+        """
         self.miner = EFIM.EFIM(iFile=self.inputFile, minUtil=minUtil)
         self.miner.mine()
         self.miner.printResults()

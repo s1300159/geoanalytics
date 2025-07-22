@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="frequentSpatialPatternMining" href="PMfrequentSpatialPatternMining.html" />
+    <link rel="next" title="Normalization" href="normalization.html" />
     <link rel="prev" title="RelativeHighUtilityPatternMining" href="PMRelativeHighUtilityPatternMining.html" /> 
 </head>
 
@@ -71,7 +71,6 @@
 <li class="toctree-l3"><a class="reference internal" href="PMRelativeFrequentPatternMining.html">RelativeFrequentPatternMining</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PMRelativeHighUtilityPatternMining.html">RelativeHighUtilityPatternMining</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">StablePeriodicPatternMining</a></li>
-<li class="toctree-l3"><a class="reference internal" href="PMfrequentSpatialPatternMining.html">frequentSpatialPatternMining</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
@@ -113,10 +112,55 @@
 <dt class="sig sig-object py" id="geoanalytics.patternMining.StablePeriodicPatternMining.StablePeriodicPatternMining">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.patternMining.StablePeriodicPatternMining.</span></span><span class="sig-name descname"><span class="pre">StablePeriodicPatternMining</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/patternMining/StablePeriodicPatternMining.html#StablePeriodicPatternMining"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.patternMining.StablePeriodicPatternMining.StablePeriodicPatternMining" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMiner</span></code></p>
+<p><strong>About this algorithm</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This module implements the <strong>SPPGrowth algorithm</strong> for mining <strong>stable periodic frequent patterns</strong>
+from temporal databases. It discovers itemsets that appear frequently with stable periodicity
+under given constraints on maximum period and maximum latency.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><cite>inputFile</cite> (<em>str</em>): Path to the temporal transactional database file.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputFile</strong> (<em>str</em>): The temporal database file provided during object instantiation.</p></li>
+<li><p><strong>miner</strong> (<em>SPPGrowth</em>): Instance of the SPPGrowth algorithm from the PAMI library.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Execution methods</strong></p>
+<p><strong>Calling from a Python program</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geoanalytics.patternMining</span> <span class="kn">import</span> <span class="n">StablePeriodicPatternMining</span>
+
+<span class="n">miner</span> <span class="o">=</span> <span class="n">StablePeriodicPatternMining</span><span class="p">(</span><span class="s2">&quot;data/input.txt&quot;</span><span class="p">)</span>
+
+<span class="n">miner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">minSupport</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">maxPer</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">maxLa</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Credits</strong></p>
+<blockquote>
+<div><p>Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.</p>
+</div></blockquote>
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.patternMining.StablePeriodicPatternMining.StablePeriodicPatternMining.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">minSupport</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxPer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxLa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/patternMining/StablePeriodicPatternMining.html#StablePeriodicPatternMining.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.patternMining.StablePeriodicPatternMining.StablePeriodicPatternMining.run" title="Permalink to this definition"></a></dt>
-<dd><p>Run the mining algorithm with specific parameters.</p>
+<dd><p>Runs the SPPGrowth algorithm to mine stable periodic patterns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>minSupport</strong> (<em>int</em>) – Minimum support threshold for patterns.</p></li>
+<li><p><strong>maxPer</strong> (<em>int</em>) – Maximum period allowed for the patterns.</p></li>
+<li><p><strong>maxLa</strong> (<em>int</em>) – Maximum latency allowed for the patterns.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Output:</dt><dd><p>Prints the discovered stable periodic patterns to the console.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -128,7 +172,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="PMRelativeHighUtilityPatternMining.html" class="btn btn-neutral float-left" title="RelativeHighUtilityPatternMining" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="PMfrequentSpatialPatternMining.html" class="btn btn-neutral float-right" title="frequentSpatialPatternMining" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="normalization.html" class="btn btn-neutral float-right" title="Normalization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

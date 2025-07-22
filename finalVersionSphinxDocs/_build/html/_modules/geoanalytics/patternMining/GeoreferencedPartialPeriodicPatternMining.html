@@ -70,7 +70,18 @@
            <div itemprop="articleBody">
              
   <h1>Source code for geoanalytics.patternMining.GeoreferencedPartialPeriodicPatternMining</h1><div class="highlight"><pre>
-<span></span><span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span></span><span class="c1"># GeoreferencedPartialPeriodicPatternMining Class for Mining Georeferenced Partial Periodic Patterns</span>
+<span class="c1">#</span>
+<span class="c1"># **Importing and Using the GeoreferencedPartialPeriodicPatternMining Class in a Python Program**</span>
+<span class="c1">#</span>
+<span class="c1">#             from geoanalytics.patternMining import GeoreferencedPartialPeriodicPatternMining</span>
+<span class="c1">#</span>
+<span class="c1">#             miner = GeoreferencedPartialPeriodicPatternMining(&quot;data/input.txt&quot;)</span>
+<span class="c1">#</span>
+<span class="c1">#             miner.run(minPS=3, maxIAT=5, nFile=&quot;data/neighbor.txt&quot;)</span>
+<span class="c1">#</span>
+
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Copyright (C)  2022 Rage Uday Kiran</span>
 
 <span class="s2">     This program is free software: you can redistribute it and/or modify</span>
@@ -93,10 +104,63 @@
 <span class="kn">from</span> <span class="nn">.abstract</span> <span class="kn">import</span> <span class="n">PatternMiner</span>
 
 <div class="viewcode-block" id="GeoreferencedPartialPeriodicPatternMining"><a class="viewcode-back" href="../../../PMGeoreferencedPartialPeriodicPatternMining.html#geoanalytics.patternMining.GeoreferencedPartialPeriodicPatternMining.GeoreferencedPartialPeriodicPatternMining">[docs]</a><span class="k">class</span> <span class="nc">GeoreferencedPartialPeriodicPatternMining</span><span class="p">(</span><span class="n">PatternMiner</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **About this algorithm**</span>
+
+<span class="sd">    :**Description**:</span>
+<span class="sd">        This module implements the **STEclat algorithm** to mine **georeferenced partial periodic patterns**</span>
+<span class="sd">        from temporal transactional datasets. This algorithm finds itemsets that appear periodically within</span>
+<span class="sd">        certain time constraints, incorporating spatial neighborhood information via a neighborhood file.</span>
+
+<span class="sd">        This approach is valuable in spatiotemporal data mining applications such as environmental data</span>
+<span class="sd">        analysis, urban monitoring, and other domains requiring discovery of partial periodic patterns</span>
+<span class="sd">        with spatial context.</span>
+
+<span class="sd">    :**Parameters**:</span>
+<span class="sd">        - `inputFile` (*str*): Path to the temporal transactional database file.</span>
+<span class="sd">        - `nFile` (*str*): Path to the neighborhood file specifying spatial relationships.</span>
+
+<span class="sd">    :**Attributes**:</span>
+<span class="sd">        - **inputFile** (*str*): The temporal transactional data file provided during object instantiation.</span>
+<span class="sd">        - **miner** (*STEclat*): Instance of the STEclat algorithm from the PAMI library.</span>
+
+<span class="sd">    **Execution methods**</span>
+
+<span class="sd">    **Calling from a Python program**</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        from geoanalytics.patternMining import GeoreferencedPartialPeriodicPatternMining</span>
+
+<span class="sd">        miner = GeoreferencedPartialPeriodicPatternMining(&quot;data/input.txt&quot;)</span>
+
+<span class="sd">        miner.run(minPS=3, maxIAT=5, nFile=&quot;data/neighbor.txt&quot;)</span>
+
+<span class="sd">    **Credits**</span>
+
+<span class="sd">     Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">_create_database</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Internal method to initialize the temporal transactional database.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            TemporalDatabase: Temporal database object from the PAMI library.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">TemporalDatabase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputFile</span><span class="p">)</span>
 
 <div class="viewcode-block" id="GeoreferencedPartialPeriodicPatternMining.run"><a class="viewcode-back" href="../../../PMGeoreferencedPartialPeriodicPatternMining.html#geoanalytics.patternMining.GeoreferencedPartialPeriodicPatternMining.GeoreferencedPartialPeriodicPatternMining.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minPS</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">maxIAT</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">nFile</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Executes the STEclat algorithm to mine georeferenced partial periodic patterns.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            minPS (int): Minimum partial periodicity support threshold.</span>
+<span class="sd">            maxIAT (int): Maximum inter-arrival time allowed between pattern occurrences.</span>
+<span class="sd">            nFile (str): Path to the neighborhood file containing spatial proximity information.</span>
+
+<span class="sd">        Output:</span>
+<span class="sd">            Prints the discovered georeferenced partial periodic patterns to the console.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">miner</span> <span class="o">=</span> <span class="n">STEclat</span><span class="o">.</span><span class="n">STEclat</span><span class="p">(</span><span class="n">iFile</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inputFile</span><span class="p">,</span> <span class="n">minPS</span><span class="o">=</span><span class="n">minPS</span><span class="p">,</span> <span class="n">maxIAT</span><span class="o">=</span><span class="n">maxIAT</span><span class="p">,</span> <span class="n">nFile</span><span class="o">=</span><span class="n">nFile</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">miner</span><span class="o">.</span><span class="n">mine</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">miner</span><span class="o">.</span><span class="n">printResults</span><span class="p">()</span></div></div>

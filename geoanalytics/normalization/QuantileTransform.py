@@ -48,7 +48,7 @@ from sklearn.preprocessing import QuantileTransformer
 
 class QuantileTransform:
     """
-    **About this module**
+    **About this algorithm**
 
     :**Description**:
         Quantile Transformation maps the data to a normal distribution by transforming features

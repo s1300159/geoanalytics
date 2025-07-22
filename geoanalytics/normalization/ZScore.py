@@ -48,7 +48,7 @@ from sklearn.preprocessing import StandardScaler
 
 class ZScore:
     """
-    **About this module**
+    **About this algorithm**
 
     :**Description**:
         ZScore normalization (also called standard score normalization) scales each feature so that it has

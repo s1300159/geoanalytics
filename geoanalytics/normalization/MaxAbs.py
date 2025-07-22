@@ -48,7 +48,7 @@ from sklearn.preprocessing import MaxAbsScaler
 
 class MaxAbs:
     """
-    **About this module**
+    **About this algorithm**
 
     :**Description**:
         MaxAbs is a normalization technique that scales each feature by its maximum absolute value.

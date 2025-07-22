@@ -71,7 +71,6 @@
 <li class="toctree-l3"><a class="reference internal" href="PMRelativeFrequentPatternMining.html">RelativeFrequentPatternMining</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PMRelativeHighUtilityPatternMining.html">RelativeHighUtilityPatternMining</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PMStablePeriodicPatternMining.html">StablePeriodicPatternMining</a></li>
-<li class="toctree-l3"><a class="reference internal" href="PMfrequentSpatialPatternMining.html">frequentSpatialPatternMining</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
@@ -113,10 +112,59 @@
 <dt class="sig sig-object py" id="geoanalytics.patternMining.GeoreferencedPartialPeriodicPatternMining.GeoreferencedPartialPeriodicPatternMining">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.patternMining.GeoreferencedPartialPeriodicPatternMining.</span></span><span class="sig-name descname"><span class="pre">GeoreferencedPartialPeriodicPatternMining</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/patternMining/GeoreferencedPartialPeriodicPatternMining.html#GeoreferencedPartialPeriodicPatternMining"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.patternMining.GeoreferencedPartialPeriodicPatternMining.GeoreferencedPartialPeriodicPatternMining" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMiner</span></code></p>
+<p><strong>About this algorithm</strong></p>
+<dl class="field-list">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This module implements the <strong>STEclat algorithm</strong> to mine <strong>georeferenced partial periodic patterns</strong>
+from temporal transactional datasets. This algorithm finds itemsets that appear periodically within
+certain time constraints, incorporating spatial neighborhood information via a neighborhood file.</p>
+<p>This approach is valuable in spatiotemporal data mining applications such as environmental data
+analysis, urban monitoring, and other domains requiring discovery of partial periodic patterns
+with spatial context.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><cite>inputFile</cite> (<em>str</em>): Path to the temporal transactional database file.</p></li>
+<li><p><cite>nFile</cite> (<em>str</em>): Path to the neighborhood file specifying spatial relationships.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputFile</strong> (<em>str</em>): The temporal transactional data file provided during object instantiation.</p></li>
+<li><p><strong>miner</strong> (<em>STEclat</em>): Instance of the STEclat algorithm from the PAMI library.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Execution methods</strong></p>
+<p><strong>Calling from a Python program</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geoanalytics.patternMining</span> <span class="kn">import</span> <span class="n">GeoreferencedPartialPeriodicPatternMining</span>
+
+<span class="n">miner</span> <span class="o">=</span> <span class="n">GeoreferencedPartialPeriodicPatternMining</span><span class="p">(</span><span class="s2">&quot;data/input.txt&quot;</span><span class="p">)</span>
+
+<span class="n">miner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">minPS</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">maxIAT</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">nFile</span><span class="o">=</span><span class="s2">&quot;data/neighbor.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Credits</strong></p>
+<blockquote>
+<div><p>Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.</p>
+</div></blockquote>
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.patternMining.GeoreferencedPartialPeriodicPatternMining.GeoreferencedPartialPeriodicPatternMining.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">minPS</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxIAT</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/patternMining/GeoreferencedPartialPeriodicPatternMining.html#GeoreferencedPartialPeriodicPatternMining.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.patternMining.GeoreferencedPartialPeriodicPatternMining.GeoreferencedPartialPeriodicPatternMining.run" title="Permalink to this definition"></a></dt>
-<dd><p>Run the mining algorithm with specific parameters.</p>
+<dd><p>Executes the STEclat algorithm to mine georeferenced partial periodic patterns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>minPS</strong> (<em>int</em>) – Minimum partial periodicity support threshold.</p></li>
+<li><p><strong>maxIAT</strong> (<em>int</em>) – Maximum inter-arrival time allowed between pattern occurrences.</p></li>
+<li><p><strong>nFile</strong> (<em>str</em>) – Path to the neighborhood file containing spatial proximity information.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Output:</dt><dd><p>Prints the discovered georeferenced partial periodic patterns to the console.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

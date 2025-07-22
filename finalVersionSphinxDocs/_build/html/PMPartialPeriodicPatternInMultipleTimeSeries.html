@@ -71,7 +71,6 @@
 <li class="toctree-l3"><a class="reference internal" href="PMRelativeFrequentPatternMining.html">RelativeFrequentPatternMining</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PMRelativeHighUtilityPatternMining.html">RelativeHighUtilityPatternMining</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PMStablePeriodicPatternMining.html">StablePeriodicPatternMining</a></li>
-<li class="toctree-l3"><a class="reference internal" href="PMfrequentSpatialPatternMining.html">frequentSpatialPatternMining</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
@@ -113,10 +112,55 @@
 <dt class="sig sig-object py" id="geoanalytics.patternMining.PartialPeriodicPatternInMultipleTimeSeries.PartialPeriodicPatternInMultipleTimeSeries">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.patternMining.PartialPeriodicPatternInMultipleTimeSeries.</span></span><span class="sig-name descname"><span class="pre">PartialPeriodicPatternInMultipleTimeSeries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/patternMining/PartialPeriodicPatternInMultipleTimeSeries.html#PartialPeriodicPatternInMultipleTimeSeries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.patternMining.PartialPeriodicPatternInMultipleTimeSeries.PartialPeriodicPatternInMultipleTimeSeries" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMiner</span></code></p>
+<p><strong>About this algorithm</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This module implements the <strong>PPGrowth algorithm</strong> for mining <strong>partial periodic patterns</strong>
+across multiple temporal transactional datasets (multiple time series). It identifies itemsets
+exhibiting periodic behavior with respect to a specified period and minimum periodic support
+threshold across multiple series.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><cite>inputFile</cite> (<em>str</em>): Path to the temporal transactional database file containing multiple time series.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputFile</strong> (<em>str</em>): The temporal transactional input file provided during object instantiation.</p></li>
+<li><p><strong>miner</strong> (<em>PPGrowth</em>): Instance of the PPGrowth algorithm from the PAMI library.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Execution methods</strong></p>
+<p><strong>Calling from a Python program</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geoanalytics.patternMining</span> <span class="kn">import</span> <span class="n">PartialPeriodicPatternInMultipleTimeSeries</span>
+
+<span class="n">miner</span> <span class="o">=</span> <span class="n">PartialPeriodicPatternInMultipleTimeSeries</span><span class="p">(</span><span class="s2">&quot;data/input.txt&quot;</span><span class="p">)</span>
+
+<span class="n">miner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">periodicSupport</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Credits</strong></p>
+<blockquote>
+<div><p>Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.</p>
+</div></blockquote>
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.patternMining.PartialPeriodicPatternInMultipleTimeSeries.PartialPeriodicPatternInMultipleTimeSeries.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periodicSupport</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/patternMining/PartialPeriodicPatternInMultipleTimeSeries.html#PartialPeriodicPatternInMultipleTimeSeries.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.patternMining.PartialPeriodicPatternInMultipleTimeSeries.PartialPeriodicPatternInMultipleTimeSeries.run" title="Permalink to this definition"></a></dt>
-<dd><p>Run the mining algorithm with specific parameters.</p>
+<dd><p>Executes the PPGrowth algorithm to mine partial periodic patterns in multiple time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>period</strong> (<em>int</em>) – The periodicity window to evaluate pattern repetition.</p></li>
+<li><p><strong>periodicSupport</strong> (<em>int</em>) – Minimum periodic support threshold indicating required occurrences within the period.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Output:</dt><dd><p>Prints the discovered partial periodic patterns across multiple time series to the console.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

@@ -37,7 +37,7 @@ from sklearn.cluster import KMeans
 
 class OverlapScore:
     """
-    **About this module**
+    **About this algorithm**
 
     :**Description**:
         OverlapScore quantifies the cluster overlap between two datasets using KMeans clustering.

@@ -48,7 +48,7 @@ from sklearn.preprocessing import PowerTransformer
 
 class PowerTransform:
     """
-    **About this module**
+    **About this algorithm**
 
     :**Description**:
         Power Transformation using the Yeo-Johnson method stabilizes variance and makes data more

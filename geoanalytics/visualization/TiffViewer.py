@@ -34,7 +34,7 @@ import rasterio
 
 class TiffViewer():
     """
-    **About this module**
+    **About this algorithm**
 
     :**Description**:
         TiffViewer is a lightweight visualization utility that reads and displays single-band raster

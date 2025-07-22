@@ -1,3 +1,14 @@
+# PartialPeriodicFrequentPatternMining Class for Mining Partial Periodic Frequent Patterns
+#
+# **Importing and Using the PartialPeriodicFrequentPatternMining Class in a Python Program**
+#
+#             from geoanalytics.patternMining import PartialPeriodicFrequentPatternMining
+#
+#             miner = PartialPeriodicFrequentPatternMining("data/input.txt")
+#
+#             miner.run(minSupport=3, maxPer=10, minPR=2)
+#
+
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -22,10 +33,59 @@ from PAMI.partialPeriodicFrequentPattern.basic import GPFgrowth
 from .abstract import PatternMiner
 
 class PartialPeriodicFrequentPatternMining(PatternMiner):
+    """
+    **About this algorithm**
+
+    :**Description**:
+        This module implements the **GPFgrowth algorithm** for mining **partial periodic frequent patterns**
+        from temporal transactional databases. The algorithm identifies frequent itemsets that exhibit
+        periodic behavior with partial periodicity constraints, controlled by maximum periodicity
+        and minimum periodic repetition parameters.
+
+    :**Parameters**:
+        - `inputFile` (*str*): Path to the temporal transactional database file.
+
+    :**Attributes**:
+        - **inputFile** (*str*): The temporal transactional input file provided during object instantiation.
+        - **miner** (*GPFgrowth*): Instance of the GPFgrowth algorithm from the PAMI library.
+
+    **Execution methods**
+
+    **Calling from a Python program**
+
+    .. code-block:: python
+
+        from geoanalytics.patternMining import PartialPeriodicFrequentPatternMining
+
+        miner = PartialPeriodicFrequentPatternMining("data/input.txt")
+
+        miner.run(minSupport=3, maxPer=10, minPR=2)
+
+    **Credits**
+
+     Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.
+    """
     def _create_database(self):
+        """
+        Internal method to initialize the temporal transactional database.
+
+        Returns:
+            TemporalDatabase: Temporal database object from the PAMI library.
+        """
         return TemporalDatabase(self.inputFile)
 
     def run(self, minSupport: int, maxPer: int, minPR: int):
+        """
+        Executes the GPFgrowth algorithm to mine partial periodic frequent patterns.
+
+        Args:
+            minSupport (int): Minimum support threshold for frequent itemsets.
+            maxPer (int): Maximum periodicity threshold controlling pattern recurrence interval.
+            minPR (int): Minimum periodic repetition threshold specifying minimum occurrences in periodic cycles.
+
+        Output:
+            Prints the discovered partial periodic frequent patterns to the console.
+        """
         self.miner = GPFgrowth.GPFgrowth(iFile = self.inputFile, minSup = minSupport, maxPer = maxPer, minPR = minPR)
         self.miner.mine()
         self.miner.printResults()

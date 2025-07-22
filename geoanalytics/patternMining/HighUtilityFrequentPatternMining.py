@@ -1,3 +1,13 @@
+# HighUtilityFrequentPatternMining Class for Mining High Utility Frequent Patterns
+#
+# **Importing and Using the HighUtilityFrequentPatternMining Class in a Python Program**
+#
+#             from geoanalytics.patternMining import HighUtilityFrequentPatternMining
+#
+#             miner = HighUtilityFrequentPatternMining("data/input.txt")
+#
+#             miner.run(minSupport=3, minUtil=50)
+#
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -21,10 +31,58 @@ from PAMI.highUtilityFrequentPattern.basic import HUFIM
 from .abstract import PatternMiner
 
 class HighUtilityFrequentPatternMining(PatternMiner):
+    """
+    **About this algorithm**
+
+    :**Description**:
+        This module implements the **HUFIM algorithm** for mining **high utility frequent patterns**
+        from utility transactional databases. Unlike traditional frequent pattern mining, this algorithm
+        considers the utility (e.g., profit, importance) of items along with their frequency, allowing
+        discovery of itemsets that are both frequent and have high utility.
+
+    :**Parameters**:
+        - `inputFile` (*str*): Path to the input utility transactional database file.
+
+    :**Attributes**:
+        - **inputFile** (*str*): The utility transactional input file provided during object initialization.
+        - **miner** (*HUFIM*): Instance of the HUFIM algorithm from the PAMI library.
+
+    **Execution methods**
+
+    **Calling from a Python program**
+
+    .. code-block:: python
+
+        from geoanalytics.patternMining import HighUtilityFrequentPatternMining
+
+        miner = HighUtilityFrequentPatternMining("data/input.txt")
+
+        miner.run(minSupport=3, minUtil=50)
+
+    **Credits**
+
+     Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.
+    """
     def _create_database(self):
+        """
+        Internal method to initialize the utility transactional database.
+
+        Returns:
+            UtilityDatabase: Utility transactional database object from the PAMI library.
+        """
         return UtilityDatabase(self.inputFile)
 
     def run(self, minSupport: int, minUtil: int):
+        """
+        Executes the HUFIM algorithm to mine high utility frequent patterns.
+
+        Args:
+            minSupport (int): Minimum support threshold for frequent itemsets.
+            minUtil (int): Minimum utility threshold to identify high utility patterns.
+
+        Output:
+            Prints the discovered high utility frequent patterns to the console.
+        """
         self.miner = HUFIM.HUFIM(iFile=self.inputFile, minSup=minSupport, minUtil=minUtil)
         self.miner.mine()
         self.miner.printResults()

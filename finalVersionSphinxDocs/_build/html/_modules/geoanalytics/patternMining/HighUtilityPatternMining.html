@@ -70,7 +70,18 @@
            <div itemprop="articleBody">
              
   <h1>Source code for geoanalytics.patternMining.HighUtilityPatternMining</h1><div class="highlight"><pre>
-<span></span><span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span></span><span class="c1"># HighUtilityPatternMining Class for Mining High Utility Patterns</span>
+<span class="c1">#</span>
+<span class="c1"># **Importing and Using the HighUtilityPatternMining Class in a Python Program**</span>
+<span class="c1">#</span>
+<span class="c1">#             from geoanalytics.patternMining import HighUtilityPatternMining</span>
+<span class="c1">#</span>
+<span class="c1">#             miner = HighUtilityPatternMining(&quot;data/input.txt&quot;)</span>
+<span class="c1">#</span>
+<span class="c1">#             miner.run(minUtil=50)</span>
+<span class="c1">#</span>
+
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Copyright (C)  2022 Rage Uday Kiran</span>
 
 <span class="s2">     This program is free software: you can redistribute it and/or modify</span>
@@ -93,10 +104,56 @@
 <span class="kn">from</span> <span class="nn">.abstract</span> <span class="kn">import</span> <span class="n">PatternMiner</span>
 
 <div class="viewcode-block" id="HighUtilityPatternMining"><a class="viewcode-back" href="../../../PMHighUtilityPatternMining.html#geoanalytics.patternMining.HighUtilityPatternMining.HighUtilityPatternMining">[docs]</a><span class="k">class</span> <span class="nc">HighUtilityPatternMining</span><span class="p">(</span><span class="n">PatternMiner</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   **About this algorithm**</span>
+
+<span class="sd">   :**Description**:</span>
+<span class="sd">       This module implements the **EFIM algorithm** for mining **high utility patterns**</span>
+<span class="sd">       from utility transactional databases. Unlike traditional frequent pattern mining, this method</span>
+<span class="sd">       focuses solely on the utility aspect, discovering itemsets with utility above the specified threshold.</span>
+
+<span class="sd">   :**Parameters**:</span>
+<span class="sd">       - `inputFile` (*str*): Path to the input utility transactional database file.</span>
+
+<span class="sd">   :**Attributes**:</span>
+<span class="sd">       - **inputFile** (*str*): The utility transactional input file provided during object initialization.</span>
+<span class="sd">       - **miner** (*EFIM*): Instance of the EFIM algorithm from the PAMI library.</span>
+
+<span class="sd">   **Execution methods**</span>
+
+<span class="sd">   **Calling from a Python program**</span>
+
+<span class="sd">   .. code-block:: python</span>
+
+<span class="sd">       from geoanalytics.patternMining import HighUtilityPatternMining</span>
+
+<span class="sd">       miner = HighUtilityPatternMining(&quot;data/input.txt&quot;)</span>
+
+<span class="sd">       miner.run(minUtil=50)</span>
+
+<span class="sd">   **Credits**</span>
+
+<span class="sd">    Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.</span>
+<span class="sd">   &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">_create_database</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Internal method to initialize the utility transactional database.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            UtilityDatabase: Utility transactional database object from the PAMI library.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">UtilityDatabase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputFile</span><span class="p">)</span>
 
 <div class="viewcode-block" id="HighUtilityPatternMining.run"><a class="viewcode-back" href="../../../PMHighUtilityPatternMining.html#geoanalytics.patternMining.HighUtilityPatternMining.HighUtilityPatternMining.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minUtil</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Executes the EFIM algorithm to mine high utility patterns.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            minUtil (int): Minimum utility threshold to identify high utility patterns.</span>
+
+<span class="sd">        Output:</span>
+<span class="sd">            Prints the discovered high utility patterns to the console.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">miner</span> <span class="o">=</span> <span class="n">EFIM</span><span class="o">.</span><span class="n">EFIM</span><span class="p">(</span><span class="n">iFile</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inputFile</span><span class="p">,</span> <span class="n">minUtil</span><span class="o">=</span><span class="n">minUtil</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">miner</span><span class="o">.</span><span class="n">mine</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">miner</span><span class="o">.</span><span class="n">printResults</span><span class="p">()</span></div></div>

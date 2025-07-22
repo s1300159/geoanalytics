@@ -37,7 +37,7 @@ from scipy.spatial.distance import cdist
 
 class CrossDistance:
     """
-    **About this module**
+    **About this algorithm**
 
     :**Description**:
         CrossDistance computes the average pairwise distances between two datasets using a specified distance metric.

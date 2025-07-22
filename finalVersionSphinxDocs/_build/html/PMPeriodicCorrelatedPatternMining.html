@@ -71,7 +71,6 @@
 <li class="toctree-l3"><a class="reference internal" href="PMRelativeFrequentPatternMining.html">RelativeFrequentPatternMining</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PMRelativeHighUtilityPatternMining.html">RelativeHighUtilityPatternMining</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PMStablePeriodicPatternMining.html">StablePeriodicPatternMining</a></li>
-<li class="toctree-l3"><a class="reference internal" href="PMfrequentSpatialPatternMining.html">frequentSpatialPatternMining</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
@@ -113,10 +112,56 @@
 <dt class="sig sig-object py" id="geoanalytics.patternMining.PeriodicCorrelatedPatternMining.PeriodicCorrelatedPatternMining">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.patternMining.PeriodicCorrelatedPatternMining.</span></span><span class="sig-name descname"><span class="pre">PeriodicCorrelatedPatternMining</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/patternMining/PeriodicCorrelatedPatternMining.html#PeriodicCorrelatedPatternMining"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.patternMining.PeriodicCorrelatedPatternMining.PeriodicCorrelatedPatternMining" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMiner</span></code></p>
+<p><strong>About this algorithm</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This module implements the <strong>EPCPGrowth algorithm</strong> for mining <strong>periodic correlated patterns</strong>
+from temporal transactional databases. The algorithm discovers itemsets that appear frequently
+with strong correlation within specific periodic intervals controlled by periodic correlation thresholds.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><cite>inputFile</cite> (<em>str</em>): Path to the temporal transactional database file.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputFile</strong> (<em>str</em>): The temporal transactional input file provided during object instantiation.</p></li>
+<li><p><strong>miner</strong> (<em>EPCPGrowth</em>): Instance of the EPCPGrowth algorithm from the PAMI library.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Execution methods</strong></p>
+<p><strong>Calling from a Python program</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geoanalytics.patternMining</span> <span class="kn">import</span> <span class="n">PeriodicCorrelatedPatternMining</span>
+
+<span class="n">miner</span> <span class="o">=</span> <span class="n">PeriodicCorrelatedPatternMining</span><span class="p">(</span><span class="s2">&quot;data/input.txt&quot;</span><span class="p">)</span>
+
+<span class="n">miner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">minSupport</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">minAllConf</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">maxPerAllConf</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">maxPer</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Credits</strong></p>
+<blockquote>
+<div><p>Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.</p>
+</div></blockquote>
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.patternMining.PeriodicCorrelatedPatternMining.PeriodicCorrelatedPatternMining.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">minSupport</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minAllConf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxPerAllConf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxPer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/patternMining/PeriodicCorrelatedPatternMining.html#PeriodicCorrelatedPatternMining.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.patternMining.PeriodicCorrelatedPatternMining.PeriodicCorrelatedPatternMining.run" title="Permalink to this definition"></a></dt>
-<dd><p>Run the mining algorithm with specific parameters.</p>
+<dd><p>Executes the EPCPGrowth algorithm to mine periodic correlated patterns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>minSupport</strong> (<em>int</em>) – Minimum support threshold for frequent itemsets.</p></li>
+<li><p><strong>minAllConf</strong> (<em>float</em>) – Minimum all-confidence threshold for correlation.</p></li>
+<li><p><strong>maxPerAllConf</strong> (<em>float</em>) – Maximum periodic all-confidence threshold controlling periodic correlation.</p></li>
+<li><p><strong>maxPer</strong> (<em>int</em><em> or </em><em>float</em>) – Maximum periodicity controlling pattern recurrence interval.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Output:</dt><dd><p>Prints the discovered periodic correlated patterns to the console.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

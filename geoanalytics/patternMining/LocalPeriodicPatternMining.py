@@ -1,3 +1,14 @@
+# LocalPeriodicPatternMining Class for Mining Local Periodic Patterns
+#
+# **Importing and Using the LocalPeriodicPatternMining Class in a Python Program**
+#
+#             from geoanalytics.patternMining import LocalPeriodicPatternMining
+#
+#             miner = LocalPeriodicPatternMining("data/input.txt")
+#
+#             miner.run(maxPer=10, maxSoPer=5, minDur=3)
+#
+
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -22,10 +33,59 @@ from PAMI.localPeriodicPattern.basic import LPPGrowth
 from .abstract import PatternMiner
 
 class LocalPeriodicPatternMining(PatternMiner):
+    """
+    **About this algorithm**
+
+    :**Description**:
+        This module implements the **LPPGrowth algorithm** for mining **local periodic patterns**
+        from temporal transactional datasets. The algorithm identifies patterns with periodic
+        recurrence within local temporal windows, controlled by maximum periodicity,
+        maximum sub-periodicity, and minimum duration thresholds.
+
+    :**Parameters**:
+        - `inputFile` (*str*): Path to the temporal transactional database file.
+
+    :**Attributes**:
+        - **inputFile** (*str*): The temporal transactional input file provided during object instantiation.
+        - **miner** (*LPPGrowth*): Instance of the LPPGrowth algorithm from the PAMI library.
+
+    **Execution methods**
+
+    **Calling from a Python program**
+
+    .. code-block:: python
+
+        from geoanalytics.patternMining import LocalPeriodicPatternMining
+
+        miner = LocalPeriodicPatternMining("data/input.txt")
+
+        miner.run(maxPer=10, maxSoPer=5, minDur=3)
+
+    **Credits**
+
+     Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.
+    """
     def _create_database(self):
+        """
+        Internal method to initialize the temporal transactional database.
+
+        Returns:
+            TemporalDatabase: Temporal database object from the PAMI library.
+        """
         return TemporalDatabase(self.inputFile)
 
     def run(self, maxPer: int, maxSoPer: int, minDur: int):
+        """
+        Executes the LPPGrowth algorithm to mine local periodic patterns.
+
+        Args:
+            maxPer (int): Maximum periodicity threshold controlling pattern recurrence interval.
+            maxSoPer (int): Maximum sub-periodicity threshold controlling pattern sub-intervals.
+            minDur (int): Minimum duration threshold specifying the minimal length of the periodic pattern.
+
+        Output:
+            Prints the discovered local periodic patterns to the console.
+        """
         self.miner = LPPGrowth.LPPGrowth(iFile = self.inputFile, maxPer=maxPer, maxSoPer=maxSoPer, minDur=minDur)
         self.miner.mine()
         self.miner.printResults()

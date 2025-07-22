@@ -1,3 +1,14 @@
+# PeriodicCorrelatedPatternMining Class for Mining Periodic Correlated Patterns
+#
+# **Importing and Using the PeriodicCorrelatedPatternMining Class in a Python Program**
+#
+#             from geoanalytics.patternMining import PeriodicCorrelatedPatternMining
+#
+#             miner = PeriodicCorrelatedPatternMining("data/input.txt")
+#
+#             miner.run(minSupport=3, minAllConf=0.6, maxPerAllConf=0.8, maxPer=10)
+#
+
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -23,10 +34,59 @@ from typing import Union
 from .abstract import PatternMiner
 
 class PeriodicCorrelatedPatternMining(PatternMiner):
+    """
+    **About this algorithm**
+
+    :**Description**:
+        This module implements the **EPCPGrowth algorithm** for mining **periodic correlated patterns**
+        from temporal transactional databases. The algorithm discovers itemsets that appear frequently
+        with strong correlation within specific periodic intervals controlled by periodic correlation thresholds.
+
+    :**Parameters**:
+        - `inputFile` (*str*): Path to the temporal transactional database file.
+
+    :**Attributes**:
+        - **inputFile** (*str*): The temporal transactional input file provided during object instantiation.
+        - **miner** (*EPCPGrowth*): Instance of the EPCPGrowth algorithm from the PAMI library.
+
+    **Execution methods**
+
+    **Calling from a Python program**
+
+    .. code-block:: python
+
+        from geoanalytics.patternMining import PeriodicCorrelatedPatternMining
+
+        miner = PeriodicCorrelatedPatternMining("data/input.txt")
+
+        miner.run(minSupport=3, minAllConf=0.6, maxPerAllConf=0.8, maxPer=10)
+
+    **Credits**
+
+     Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.
+    """
     def _create_database(self):
+        """
+        Internal method to initialize the temporal transactional database.
+
+        Returns:
+            TemporalDatabase: Temporal database object from the PAMI library.
+        """
         return TemporalDatabase(self.inputFile)
 
     def run(self, minSupport: int, minAllConf: float, maxPerAllConf: float, maxPer: Union[int, float]):
+        """
+        Executes the EPCPGrowth algorithm to mine periodic correlated patterns.
+
+        Args:
+            minSupport (int): Minimum support threshold for frequent itemsets.
+            minAllConf (float): Minimum all-confidence threshold for correlation.
+            maxPerAllConf (float): Maximum periodic all-confidence threshold controlling periodic correlation.
+            maxPer (int or float): Maximum periodicity controlling pattern recurrence interval.
+
+        Output:
+            Prints the discovered periodic correlated patterns to the console.
+        """
         self.miner = EPCPGrowth.EPCPGrowth(iFile = self.inputFile, minSup=minSupport, minAllConf=minAllConf, maxPerAllConf=maxPerAllConf, maxPer=maxPer)
         self.miner.mine()
         self.miner.printResults()

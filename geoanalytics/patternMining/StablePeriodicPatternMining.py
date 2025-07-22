@@ -1,3 +1,14 @@
+# StablePeriodicPatternMining Class for Mining Stable Periodic Patterns
+#
+# **Importing and Using the StablePeriodicPatternMining Class in a Python Program**
+#
+#             from geoanalytics.patternMining import StablePeriodicPatternMining
+#
+#             miner = StablePeriodicPatternMining("data/input.txt")
+#
+#             miner.run(minSupport=3, maxPer=10, maxLa=5)
+#
+
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -21,10 +32,58 @@ from PAMI.stablePeriodicFrequentPattern.basic import SPPGrowth
 from .abstract import PatternMiner
 
 class StablePeriodicPatternMining(PatternMiner):
+    """
+    **About this algorithm**
+
+    :**Description**:
+        This module implements the **SPPGrowth algorithm** for mining **stable periodic frequent patterns**
+        from temporal databases. It discovers itemsets that appear frequently with stable periodicity
+        under given constraints on maximum period and maximum latency.
+
+    :**Parameters**:
+        - `inputFile` (*str*): Path to the temporal transactional database file.
+
+    :**Attributes**:
+        - **inputFile** (*str*): The temporal database file provided during object instantiation.
+        - **miner** (*SPPGrowth*): Instance of the SPPGrowth algorithm from the PAMI library.
+
+    **Execution methods**
+
+    **Calling from a Python program**
+
+    .. code-block:: python
+
+        from geoanalytics.patternMining import StablePeriodicPatternMining
+
+        miner = StablePeriodicPatternMining("data/input.txt")
+
+        miner.run(minSupport=3, maxPer=10, maxLa=5)
+
+    **Credits**
+
+     Written by M. Charan Teja, under the guidance of Professor Rage Uday Kiran.
+    """
     def _create_database(self):
+        """
+        Internal method to initialize the temporal database.
+
+        Returns:
+            TemporalDatabase: Temporal database object from the PAMI library.
+        """
         return TemporalDatabase(self.inputFile)
 
     def run(self, minSupport: int, maxPer: int, maxLa: int):
+        """
+        Runs the SPPGrowth algorithm to mine stable periodic patterns.
+
+        Args:
+            minSupport (int): Minimum support threshold for patterns.
+            maxPer (int): Maximum period allowed for the patterns.
+            maxLa (int): Maximum latency allowed for the patterns.
+
+        Output:
+            Prints the discovered stable periodic patterns to the console.
+        """
         self.miner = SPPGrowth.SPPGrowth(inputFile=self.inputFile, minSup=minSupport, maxPer=maxPer, maxLa=maxLa)
         self.miner.mine()
         self.miner.printResults()

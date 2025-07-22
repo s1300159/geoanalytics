@@ -32,7 +32,7 @@ import rasterio
 
 class NetCDFViewer():
     """
-    **About this module**
+    **About this algorithm**
 
     :**Description**:
         NetCDFViewer is a raster data visualization tool designed for rendering single-band raster layers

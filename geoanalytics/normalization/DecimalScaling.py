@@ -46,7 +46,7 @@ import pandas as pd
 
 class DecimalScaling:
     """
-    **About this module**
+    **About this algorithm**
 
     :**Description**:
         DecimalScaling is a normalization technique that transforms features by dividing them

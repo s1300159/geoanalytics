@@ -48,7 +48,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 class MinMax:
     """
-    **About this module**
+    **About this algorithm**
 
     :**Description**:
         Min-Max normalization scales each feature to a fixed range—typically [0, 1]—by subtracting the minimum

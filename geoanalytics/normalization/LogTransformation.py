@@ -46,7 +46,7 @@ import pandas as pd
 
 class LogTransformation:
     """
-   **About this module**
+   **About this algorithm**
 
    :**Description**:
        LogTransformation applies logarithmic normalization to numerical features (excluding 'x' and 'y' coordinates),
