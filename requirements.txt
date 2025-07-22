@@ -19,6 +19,7 @@ hdbscan
 rasterio
 
 scipy
+pandas
 
 sphinx
 sphinx_rtd_theme

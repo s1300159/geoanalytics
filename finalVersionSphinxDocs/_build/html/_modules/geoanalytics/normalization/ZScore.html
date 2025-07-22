@@ -70,7 +70,30 @@
            <div itemprop="articleBody">
              
   <h1>Source code for geoanalytics.normalization.ZScore</h1><div class="highlight"><pre>
-<span></span><span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span></span><span class="c1"># ZScore Class for Feature Normalization Using Standard Score (Z-Score)</span>
+
+<span class="c1"># **Importing and Using the ZScore Class in a Python Program**</span>
+<span class="c1">#</span>
+<span class="c1">#             import pandas as pd</span>
+<span class="c1">#</span>
+<span class="c1">#             from geoanalytics.normalization import ZScore</span>
+<span class="c1">#</span>
+<span class="c1">#             df = pd.read_csv(&quot;input.csv&quot;)</span>
+<span class="c1">#</span>
+<span class="c1">#             normalizer = ZScore(df)</span>
+<span class="c1">#</span>
+<span class="c1">#             normalized_df = normalizer.run()</span>
+<span class="c1">#</span>
+<span class="c1">#             normalizer.getRuntime()</span>
+<span class="c1">#</span>
+<span class="c1">#             normalizer.getMemoryUSS()</span>
+<span class="c1">#</span>
+<span class="c1">#             normalizer.getMemoryRSS()</span>
+<span class="c1">#</span>
+<span class="c1">#             normalizer.save(&quot;ZScore.csv&quot;)</span>
+<span class="c1">#</span>
+
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Copyright (C)  2022 Rage Uday Kiran</span>
 
 <span class="s2">     This program is free software: you can redistribute it and/or modify</span>
@@ -96,6 +119,52 @@
 
 
 <div class="viewcode-block" id="ZScore"><a class="viewcode-back" href="../../../normalizationZScore.html#geoanalytics.normalization.ZScore.ZScore">[docs]</a><span class="k">class</span> <span class="nc">ZScore</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **About this module**</span>
+
+<span class="sd">    :**Description**:</span>
+<span class="sd">        ZScore normalization (also called standard score normalization) scales each feature so that it has</span>
+<span class="sd">        a mean of 0 and a standard deviation of 1. This is useful when features are normally distributed</span>
+<span class="sd">        and ensures that each contributes equally to distance-based models.</span>
+
+<span class="sd">    :**Parameters**:</span>
+<span class="sd">        - `dataframe` (*pd.DataFrame*): Input DataFrame containing &#39;x&#39;, &#39;y&#39; coordinates and feature values.</span>
+
+<span class="sd">    :**Attributes**:</span>
+<span class="sd">        - **df** (*pd.DataFrame*): Input DataFrame with standardized columns (&#39;x&#39;, &#39;y&#39;, ...features).</span>
+<span class="sd">        - **normalizedDF** (*pd.DataFrame*): Output DataFrame after z-score normalization.</span>
+<span class="sd">        - **startTime, endTime** (*float*): Time tracking for execution.</span>
+<span class="sd">        - **memoryUSS, memoryRSS** (*float*): Memory usage metrics in kilobytes.</span>
+
+<span class="sd">    **Execution methods**</span>
+
+<span class="sd">    **Calling from a Python program**</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        import pandas as pd</span>
+
+<span class="sd">        from geoanalytics.normalization import ZScore</span>
+
+<span class="sd">        df = pd.read_csv(&quot;input.csv&quot;)</span>
+
+<span class="sd">        normalizer = ZScore(df)</span>
+
+<span class="sd">        normalized_df = normalizer.run()</span>
+
+<span class="sd">        normalizer.getRuntime()</span>
+
+<span class="sd">        normalizer.getMemoryUSS()</span>
+
+<span class="sd">        normalizer.getMemoryRSS()</span>
+
+<span class="sd">        normalizer.save(&quot;ZScore.csv&quot;)</span>
+
+
+<span class="sd">    **Credits**</span>
+
+<span class="sd">    Developed by Raashika and M. Charan Teja, under the guidance of Professor Rage Uday Kiran.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataframe</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes the ZScore object with a copy of the dataframe.</span>
@@ -128,6 +197,12 @@
 
 
 <div class="viewcode-block" id="ZScore.run"><a class="viewcode-back" href="../../../normalizationZScore.html#geoanalytics.normalization.ZScore.ZScore.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Applies Z-Score normalization to the dataset.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            pd.DataFrame: DataFrame with &#39;x&#39;, &#39;y&#39;, and normalized feature columns.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">startTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="n">xy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>

@@ -101,6 +101,51 @@
 <dt class="sig sig-object py" id="geoanalytics.normalization.UnitVector.UnitVector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.normalization.UnitVector.</span></span><span class="sig-name descname"><span class="pre">UnitVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/normalization/UnitVector.html#UnitVector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.normalization.UnitVector.UnitVector" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>About this algorithm</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>UnitVector performs feature normalization by scaling each row (feature vector)
+of the dataset to have unit L2 norm (i.e., the sum of squares of each row equals 1).
+This normalization is useful when you want to normalize across rows (samples)
+rather than columns (features), such as in cosine similarity or direction-based analyses.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><cite>dataframe</cite> (<em>pd.DataFrame</em>): Input DataFrame containing ‘x’, ‘y’ coordinates and feature values.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>): The original DataFrame with standardized column headers (‘x’, ‘y’, …features).</p></li>
+<li><p><strong>normalizedDF</strong> (<em>pd.DataFrame</em>): The L2-normalized output DataFrame.</p></li>
+<li><p><strong>startTime, endTime</strong> (<em>float</em>): Runtime tracking timestamps.</p></li>
+<li><p><strong>memoryUSS, memoryRSS</strong> (<em>float</em>): Memory consumption statistics in kilobytes.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Execution methods</strong></p>
+<p><strong>Calling from a Python program</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">geoanalytics.normalization</span> <span class="kn">import</span> <span class="n">UnitVector</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;input.csv&quot;</span><span class="p">)</span>
+
+<span class="n">transformer</span> <span class="o">=</span> <span class="n">UnitVector</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">normalized_df</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">transformer</span><span class="o">.</span><span class="n">getRuntime</span><span class="p">()</span>
+
+<span class="n">transformer</span><span class="o">.</span><span class="n">getMemoryUSS</span><span class="p">()</span>
+
+<span class="n">transformer</span><span class="o">.</span><span class="n">getMemoryRSS</span><span class="p">()</span>
+
+<span class="n">transformer</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;UnitVector.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Credits</strong></p>
+<p>Developed by Raashika and M. Charan Teja, under the guidance of Professor Rage Uday Kiran.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.normalization.UnitVector.UnitVector.getMemoryRSS">
 <span class="sig-name descname"><span class="pre">getMemoryRSS</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/normalization/UnitVector.html#UnitVector.getMemoryRSS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.normalization.UnitVector.UnitVector.getMemoryRSS" title="Permalink to this definition"></a></dt>
@@ -122,7 +167,16 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.normalization.UnitVector.UnitVector.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/normalization/UnitVector.html#UnitVector.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.normalization.UnitVector.UnitVector.run" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Executes unit vector (L2) normalization on each row of the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame containing ‘x’, ‘y’ and normalized feature values.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.normalization.UnitVector.UnitVector.save">

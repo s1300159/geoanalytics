@@ -101,6 +101,50 @@
 <dt class="sig sig-object py" id="geoanalytics.normalization.ZScore.ZScore">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.normalization.ZScore.</span></span><span class="sig-name descname"><span class="pre">ZScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/normalization/ZScore.html#ZScore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.normalization.ZScore.ZScore" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>About this module</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ZScore normalization (also called standard score normalization) scales each feature so that it has
+a mean of 0 and a standard deviation of 1. This is useful when features are normally distributed
+and ensures that each contributes equally to distance-based models.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><cite>dataframe</cite> (<em>pd.DataFrame</em>): Input DataFrame containing ‘x’, ‘y’ coordinates and feature values.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>): Input DataFrame with standardized columns (‘x’, ‘y’, …features).</p></li>
+<li><p><strong>normalizedDF</strong> (<em>pd.DataFrame</em>): Output DataFrame after z-score normalization.</p></li>
+<li><p><strong>startTime, endTime</strong> (<em>float</em>): Time tracking for execution.</p></li>
+<li><p><strong>memoryUSS, memoryRSS</strong> (<em>float</em>): Memory usage metrics in kilobytes.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Execution methods</strong></p>
+<p><strong>Calling from a Python program</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">geoanalytics.normalization</span> <span class="kn">import</span> <span class="n">ZScore</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;input.csv&quot;</span><span class="p">)</span>
+
+<span class="n">normalizer</span> <span class="o">=</span> <span class="n">ZScore</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">normalized_df</span> <span class="o">=</span> <span class="n">normalizer</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">normalizer</span><span class="o">.</span><span class="n">getRuntime</span><span class="p">()</span>
+
+<span class="n">normalizer</span><span class="o">.</span><span class="n">getMemoryUSS</span><span class="p">()</span>
+
+<span class="n">normalizer</span><span class="o">.</span><span class="n">getMemoryRSS</span><span class="p">()</span>
+
+<span class="n">normalizer</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;ZScore.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Credits</strong></p>
+<p>Developed by Raashika and M. Charan Teja, under the guidance of Professor Rage Uday Kiran.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.normalization.ZScore.ZScore.getMemoryRSS">
 <span class="sig-name descname"><span class="pre">getMemoryRSS</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/normalization/ZScore.html#ZScore.getMemoryRSS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.normalization.ZScore.ZScore.getMemoryRSS" title="Permalink to this definition"></a></dt>
@@ -122,7 +166,16 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.normalization.ZScore.ZScore.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/normalization/ZScore.html#ZScore.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.normalization.ZScore.ZScore.run" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Applies Z-Score normalization to the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame with ‘x’, ‘y’, and normalized feature columns.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.normalization.ZScore.ZScore.save">

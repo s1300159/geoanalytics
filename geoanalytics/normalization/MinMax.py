@@ -1,3 +1,26 @@
+# MinMax Class for Feature Normalization Using Min-Max Scaling
+
+# **Importing and Using the MinMax Class in a Python Program**
+#
+#             import pandas as pd
+#
+#             from geoanalytics.normalization import MinMax
+#
+#             df = pd.read_csv("input.csv")
+#
+#             scaler = MinMax(df)
+#
+#             normalized_df = scaler.run()
+#
+#             scaler.getRuntime()
+#
+#             scaler.getMemoryUSS()
+#
+#             scaler.getMemoryRSS()
+#
+#             scaler.save("MinMax.csv")
+#
+
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -24,6 +47,52 @@ from sklearn.preprocessing import MinMaxScaler
 
 
 class MinMax:
+    """
+    **About this module**
+
+    :**Description**:
+        Min-Max normalization scales each feature to a fixed range—typically [0, 1]—by subtracting the minimum
+        and dividing by the range (max - min). It is useful when features are on different scales and
+        bounded values are required for machine learning models. This class includes memory and runtime tracking.
+
+    :**Parameters**:
+        - `dataframe` (*pd.DataFrame*): Input DataFrame with 'x', 'y' and multiple feature columns.
+
+    :**Attributes**:
+        - **df** (*pd.DataFrame*) -- Input DataFrame with renamed columns 'x', 'y', and features.
+        - **normalizedDF** (*pd.DataFrame*) -- Output DataFrame after min-max normalization.
+        - **startTime, endTime** (*float*) -- Runtime measurement markers.
+        - **memoryUSS, memoryRSS** (*float*) -- Memory usage in kilobytes.
+
+    **Execution methods**
+
+    **Calling from a Python program**
+
+    .. code-block:: python
+
+            import pandas as pd
+
+            from geoanalytics.normalization import MinMax
+
+            df = pd.read_csv("input.csv")
+
+            scaler = MinMax(df)
+
+            normalized_df = scaler.run()
+
+            scaler.getRuntime()
+
+            scaler.getMemoryUSS()
+
+            scaler.getMemoryRSS()
+
+            scaler.save("MinMax.csv")
+
+
+    **Credits**
+
+    This implementation was created by Raashika and revised by M. Charan Teja under the guidance of Professor Rage Uday Kiran.
+    """
     def __init__(self, dataframe):
         """
         Initializes the MinMax object with a copy of the dataframe.
@@ -56,6 +125,12 @@ class MinMax:
 
 
     def run(self):
+        """
+        Executes min-max normalization on the dataset using sklearn’s MinMaxScaler.
+
+        Returns:
+            pd.DataFrame: DataFrame with 'x', 'y', and normalized feature columns.
+        """
 
         self.startTime = time.time()
         xy = self.df[['x', 'y']].reset_index(drop=True)

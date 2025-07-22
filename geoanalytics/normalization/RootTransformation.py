@@ -1,3 +1,26 @@
+# RootTransformation Class for Feature Normalization Using Root Scaling
+
+# **Importing and Using the RootTransformation Class in a Python Program**
+#
+#             import pandas as pd
+#
+#             from geoanalytics.normalization import RootTransformation
+#
+#             df = pd.read_csv("input.csv")
+#
+#             transformer = RootTransformation(df, root=3)
+#
+#             normalized_df = transformer.run()
+#
+#             transformer.getRuntime()
+#
+#             transformer.getMemoryUSS()
+#
+#             transformer.getMemoryRSS()
+#
+#             transformer.save("RootTransformation.csv")
+#
+
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -24,6 +47,54 @@ from sklearn.preprocessing import RobustScaler
 
 
 class RootTransformation:
+    """
+    **About this module**
+
+    :**Description**:
+        RootTransformation applies a root-based transformation to all feature values
+        in the input dataset. This is useful for reducing the effect of large outliers
+        and compressing the range of high magnitude values. For example, a square root
+        (root=2) transformation is commonly used to stabilize variance in skewed datasets.
+
+    :**Parameters**:
+        - `dataframe` (*pd.DataFrame*): Input DataFrame with 'x', 'y' coordinates and feature columns.
+        - `root` (*int*, optional): Degree of the root transformation. Defaults to 2 (square root).
+
+    :**Attributes**:
+        - **df** (*pd.DataFrame*): Original input DataFrame with renamed first two columns as 'x' and 'y'.
+        - **normalizedDF** (*pd.DataFrame*): DataFrame containing root-transformed features.
+        - **startTime, endTime** (*float*): Execution timestamps.
+        - **memoryUSS, memoryRSS** (*float*): Memory usage statistics in KB.
+
+    **Execution methods**
+
+    **Calling from a Python program**
+
+    .. code-block:: python
+
+            import pandas as pd
+
+            from geoanalytics.normalization import RootTransformation
+
+            df = pd.read_csv("input.csv")
+
+            transformer = RootTransformation(df, root=3)
+
+            normalized_df = transformer.run()
+
+            transformer.getRuntime()
+
+            transformer.getMemoryUSS()
+
+            transformer.getMemoryRSS()
+
+            transformer.save("RootTransformation.csv")
+
+
+    **Credits**
+
+    Developed by Raashika and M. Charan Teja, supervised by Professor Rage Uday Kiran.
+    """
     def __init__(self, dataframe, root = 2):
         """
         Initializes the RootTransformation object with a copy of the dataframe.
@@ -57,6 +128,12 @@ class RootTransformation:
 
 
     def run(self):
+        """
+        Executes the root transformation on the dataset.
+
+        Returns:
+            pd.DataFrame: DataFrame with 'x', 'y', and root-transformed features.
+        """
 
         self.startTime = time.time()
         xy = self.df[['x', 'y']].reset_index(drop=True)

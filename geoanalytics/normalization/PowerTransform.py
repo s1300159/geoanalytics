@@ -1,3 +1,26 @@
+# PowerTransform Class for Feature Normalization Using Power Transformation (Yeo-Johnson)
+
+# **Importing and Using the PowerTransform Class in a Python Program**
+#
+#             import pandas as pd
+#
+#             from geoanalytics.normalization import PowerTransform
+#
+#             df = pd.read_csv("input.csv")
+#
+#             scaler = PowerTransform(df)
+#
+#             normalized_df = scaler.run()
+#
+#             scaler.getRuntime()
+#
+#             scaler.getMemoryUSS()
+#
+#             scaler.getMemoryRSS()
+#
+#             scaler.save("PowerTransform.csv")
+#
+
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -24,6 +47,52 @@ from sklearn.preprocessing import PowerTransformer
 
 
 class PowerTransform:
+    """
+    **About this module**
+
+    :**Description**:
+        Power Transformation using the Yeo-Johnson method stabilizes variance and makes data more
+        Gaussian-like. It is especially useful for features with non-normal distributions.
+        This class provides runtime and memory usage tracking alongside the transformation.
+
+    :**Parameters**:
+        - `dataframe` (*pd.DataFrame*): Input DataFrame with 'x', 'y' coordinates and feature columns.
+
+    :**Attributes**:
+        - **df** (*pd.DataFrame*) -- Input DataFrame with standardized column names 'x', 'y', and features.
+        - **normalizedDF** (*pd.DataFrame*) -- DataFrame containing transformed features and coordinates.
+        - **startTime, endTime** (*float*) -- Timing markers for the transformation process.
+        - **memoryUSS, memoryRSS** (*float*) -- Memory usage metrics in kilobytes.
+
+    **Execution methods**
+
+    **Calling from a Python program**
+
+    .. code-block:: python
+
+            import pandas as pd
+
+            from geoanalytics.normalization import PowerTransform
+
+            df = pd.read_csv("input.csv")
+
+            scaler = PowerTransform(df)
+
+            normalized_df = scaler.run()
+
+            scaler.getRuntime()
+
+            scaler.getMemoryUSS()
+
+            scaler.getMemoryRSS()
+
+            scaler.save("PowerTransform.csv")
+
+
+    **Credits**
+
+    This implementation was created by Raashika and revised by M. Charan Teja under the guidance of Professor Rage Uday Kiran.
+    """
     def __init__(self, dataframe):
         """
         Initializes the PowerTransform object with a copy of the dataframe.
@@ -56,6 +125,12 @@ class PowerTransform:
 
 
     def run(self):
+        """
+        Executes the Yeo-Johnson power transformation on the dataset.
+
+        Returns:
+            pd.DataFrame: DataFrame with 'x', 'y', and power transformed feature columns.
+        """
 
         self.startTime = time.time()
         xy = self.df[['x', 'y']].reset_index(drop=True)

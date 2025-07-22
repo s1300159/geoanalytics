@@ -1,3 +1,26 @@
+# LogTransformation Class for Feature Normalization Using Logarithmic Scaling
+
+# **Importing and Using the LogTransformation Class in a Python Program**
+#
+#             import pandas as pd
+#
+#             from geoanalytics.normalization import LogTransformation
+#
+#             df = pd.read_csv("input.csv")
+#
+#             transformer = LogTransformation(df)
+#
+#             normalized_df = transformer.run()
+#
+#             transformer.getRuntime()
+#
+#             transformer.getMemoryUSS()
+#
+#             transformer.getMemoryRSS()
+#
+#             transformer.save("LogTransformation.csv")
+#
+
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -22,6 +45,52 @@ import numpy as np
 import pandas as pd
 
 class LogTransformation:
+    """
+   **About this module**
+
+   :**Description**:
+       LogTransformation applies logarithmic normalization to numerical features (excluding 'x' and 'y' coordinates),
+       which can be useful for reducing skewness in data and compressing wide value ranges.
+       The transformation uses the natural logarithm function as `log(1 + x)` to handle zero and positive values.
+
+   :**Parameters**:
+       - `dataframe` (*pd.DataFrame*): Input DataFrame containing 'x', 'y', and feature columns.
+
+   :**Attributes**:
+       - **df** (*pd.DataFrame*) -- Original DataFrame with updated column labels.
+       - **normalizedDF** (*pd.DataFrame*) -- DataFrame after applying log transformation.
+       - **startTime, endTime** (*float*) -- Timestamps used for runtime measurement.
+       - **memoryUSS, memoryRSS** (*float*) -- Memory usage statistics (USS and RSS) in kilobytes.
+
+   **Execution methods**
+
+   **Calling from a Python program**
+
+   .. code-block:: python
+
+           import pandas as pd
+
+           from geoanalytics.normalization import LogTransformation
+
+           df = pd.read_csv("input.csv")
+
+           transformer = LogTransformation(df)
+
+           normalized_df = transformer.run()
+
+           transformer.getRuntime()
+
+           transformer.getMemoryUSS()
+
+           transformer.getMemoryRSS()
+
+           transformer.save("LogTransformation.csv")
+
+
+   **Credits**
+
+   This implementation was created by Raashika and revised by M. Charan Teja under the guidance of Professor Rage Uday Kiran.
+   """
     def __init__(self, dataframe):
         """
         Initializes the LogTransformation object with a copy of the dataframe.
@@ -54,6 +123,12 @@ class LogTransformation:
 
 
     def run(self):
+        """
+        Applies natural log transformation to the feature columns using log1p (log(1 + x)).
+
+        Returns:
+            pd.DataFrame: Normalized DataFrame with 'x', 'y', and log-transformed features.
+        """
 
         self.startTime = time.time()
         xy = self.df[['x', 'y']].reset_index(drop=True)

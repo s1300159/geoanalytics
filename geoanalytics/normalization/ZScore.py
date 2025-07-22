@@ -1,3 +1,26 @@
+# ZScore Class for Feature Normalization Using Standard Score (Z-Score)
+
+# **Importing and Using the ZScore Class in a Python Program**
+#
+#             import pandas as pd
+#
+#             from geoanalytics.normalization import ZScore
+#
+#             df = pd.read_csv("input.csv")
+#
+#             normalizer = ZScore(df)
+#
+#             normalized_df = normalizer.run()
+#
+#             normalizer.getRuntime()
+#
+#             normalizer.getMemoryUSS()
+#
+#             normalizer.getMemoryRSS()
+#
+#             normalizer.save("ZScore.csv")
+#
+
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -24,6 +47,52 @@ from sklearn.preprocessing import StandardScaler
 
 
 class ZScore:
+    """
+    **About this module**
+
+    :**Description**:
+        ZScore normalization (also called standard score normalization) scales each feature so that it has
+        a mean of 0 and a standard deviation of 1. This is useful when features are normally distributed
+        and ensures that each contributes equally to distance-based models.
+
+    :**Parameters**:
+        - `dataframe` (*pd.DataFrame*): Input DataFrame containing 'x', 'y' coordinates and feature values.
+
+    :**Attributes**:
+        - **df** (*pd.DataFrame*): Input DataFrame with standardized columns ('x', 'y', ...features).
+        - **normalizedDF** (*pd.DataFrame*): Output DataFrame after z-score normalization.
+        - **startTime, endTime** (*float*): Time tracking for execution.
+        - **memoryUSS, memoryRSS** (*float*): Memory usage metrics in kilobytes.
+
+    **Execution methods**
+
+    **Calling from a Python program**
+
+    .. code-block:: python
+
+        import pandas as pd
+
+        from geoanalytics.normalization import ZScore
+
+        df = pd.read_csv("input.csv")
+
+        normalizer = ZScore(df)
+
+        normalized_df = normalizer.run()
+
+        normalizer.getRuntime()
+
+        normalizer.getMemoryUSS()
+
+        normalizer.getMemoryRSS()
+
+        normalizer.save("ZScore.csv")
+
+
+    **Credits**
+
+    Developed by Raashika and M. Charan Teja, under the guidance of Professor Rage Uday Kiran.
+    """
     def __init__(self, dataframe):
         """
         Initializes the ZScore object with a copy of the dataframe.
@@ -56,6 +125,12 @@ class ZScore:
 
 
     def run(self):
+        """
+        Applies Z-Score normalization to the dataset.
+
+        Returns:
+            pd.DataFrame: DataFrame with 'x', 'y', and normalized feature columns.
+        """
 
         self.startTime = time.time()
         xy = self.df[['x', 'y']].reset_index(drop=True)

@@ -1,3 +1,27 @@
+# RobustScaling Class for Feature Normalization Using Robust Scaling
+
+# **Importing and Using the RobustScaling Class in a Python Program**
+#
+#             import pandas as pd
+#
+#             from geoanalytics.normalization import RobustScaling
+#
+#             df = pd.read_csv("input.csv")
+#
+#             scaler = RobustScaling(df)
+#
+#             normalized_df = scaler.run()
+#
+#             scaler.getRuntime()
+#
+#             scaler.getMemoryUSS()
+#
+#             scaler.getMemoryRSS()
+#
+#             scaler.save("RobustScaling.csv")
+#
+
+
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -24,6 +48,52 @@ from sklearn.preprocessing import RobustScaler
 
 
 class RobustScaling:
+    """
+    **About this module**
+
+    :**Description**:
+        Robust Scaling normalizes features using statistics that are robust to outliers
+        (median and interquartile range). This scaling method is useful when the dataset
+        contains many outliers, providing better scaling than MinMax or Standard Scalers.
+
+    :**Parameters**:
+        - `dataframe` (*pd.DataFrame*): Input DataFrame with 'x', 'y' coordinates and feature columns.
+
+    :**Attributes**:
+        - **df** (*pd.DataFrame*): Input DataFrame with standardized column names 'x', 'y', and features.
+        - **normalizedDF** (*pd.DataFrame*): DataFrame containing scaled features along with coordinates.
+        - **startTime, endTime** (*float*): Timestamps tracking transformation execution.
+        - **memoryUSS, memoryRSS** (*float*): Memory usage in kilobytes during execution.
+
+    **Execution methods**
+
+    **Calling from a Python program**
+
+    .. code-block:: python
+
+            import pandas as pd
+
+            from geoanalytics.normalization import RobustScaling
+
+            df = pd.read_csv("input.csv")
+
+            scaler = RobustScaling(df)
+
+            normalized_df = scaler.run()
+
+            scaler.getRuntime()
+
+            scaler.getMemoryUSS()
+
+            scaler.getMemoryRSS()
+
+            scaler.save("RobustScaling.csv")
+
+
+    **Credits**
+
+    Developed by Raashika and M. Charan Teja, supervised by Professor Rage Uday Kiran.
+    """
     def __init__(self, dataframe):
         """
         Initializes the RobustScaling object with a copy of the dataframe.
@@ -56,6 +126,12 @@ class RobustScaling:
 
 
     def run(self):
+        """
+        Executes the RobustScaler normalization on the dataset.
+
+        Returns:
+            pd.DataFrame: DataFrame with 'x', 'y', and robust scaled feature columns.
+        """
 
         self.startTime = time.time()
         xy = self.df[['x', 'y']].reset_index(drop=True)

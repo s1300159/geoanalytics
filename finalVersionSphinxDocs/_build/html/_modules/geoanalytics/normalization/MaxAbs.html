@@ -70,7 +70,30 @@
            <div itemprop="articleBody">
              
   <h1>Source code for geoanalytics.normalization.MaxAbs</h1><div class="highlight"><pre>
-<span></span><span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span></span><span class="c1"># MaxAbs Class for Normalizing Features Using Maximum Absolute Scaling</span>
+
+<span class="c1"># **Importing and Using the MaxAbs Class in a Python Program**</span>
+<span class="c1">#</span>
+<span class="c1">#             import pandas as pd</span>
+<span class="c1">#</span>
+<span class="c1">#             from geoanalytics.normalization import MaxAbs</span>
+<span class="c1">#</span>
+<span class="c1">#             df = pd.read_csv(&quot;input.csv&quot;)</span>
+<span class="c1">#</span>
+<span class="c1">#             scaler = MaxAbs(df)</span>
+<span class="c1">#</span>
+<span class="c1">#             normalized_df = scaler.run()</span>
+<span class="c1">#</span>
+<span class="c1">#             scaler.getRuntime()</span>
+<span class="c1">#</span>
+<span class="c1">#             scaler.getMemoryUSS()</span>
+<span class="c1">#</span>
+<span class="c1">#             scaler.getMemoryRSS()</span>
+<span class="c1">#</span>
+<span class="c1">#             scaler.save(&quot;MaxAbs.csv&quot;)</span>
+<span class="c1">#</span>
+
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Copyright (C)  2022 Rage Uday Kiran</span>
 
 <span class="s2">     This program is free software: you can redistribute it and/or modify</span>
@@ -96,6 +119,52 @@
 
 
 <div class="viewcode-block" id="MaxAbs"><a class="viewcode-back" href="../../../normalizationMaxAbs.html#geoanalytics.normalization.MaxAbs.MaxAbs">[docs]</a><span class="k">class</span> <span class="nc">MaxAbs</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **About this module**</span>
+
+<span class="sd">    :**Description**:</span>
+<span class="sd">        MaxAbs is a normalization technique that scales each feature by its maximum absolute value.</span>
+<span class="sd">        It is particularly useful when features contain both positive and negative values,</span>
+<span class="sd">        ensuring all values lie within the range [-1, 1]. This class also tracks runtime and memory usage.</span>
+
+<span class="sd">    :**Parameters**:</span>
+<span class="sd">        - `dataframe` (*pd.DataFrame*): Input DataFrame containing &#39;x&#39;, &#39;y&#39;, and feature columns.</span>
+
+<span class="sd">    :**Attributes**:</span>
+<span class="sd">        - **df** (*pd.DataFrame*) -- Original DataFrame with standardized column names.</span>
+<span class="sd">        - **normalizedDF** (*pd.DataFrame*) -- Output DataFrame after MaxAbs scaling.</span>
+<span class="sd">        - **startTime, endTime** (*float*) -- Time tracking variables.</span>
+<span class="sd">        - **memoryUSS, memoryRSS** (*float*) -- Memory usage in kilobytes (USS and RSS).</span>
+
+<span class="sd">    **Execution methods**</span>
+
+<span class="sd">    **Calling from a Python program**</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">            import pandas as pd</span>
+
+<span class="sd">            from geoanalytics.normalization import MaxAbs</span>
+
+<span class="sd">            df = pd.read_csv(&quot;input.csv&quot;)</span>
+
+<span class="sd">            scaler = MaxAbs(df)</span>
+
+<span class="sd">            normalized_df = scaler.run()</span>
+
+<span class="sd">            scaler.getRuntime()</span>
+
+<span class="sd">            scaler.getMemoryUSS()</span>
+
+<span class="sd">            scaler.getMemoryRSS()</span>
+
+<span class="sd">            scaler.save(&quot;MaxAbs.csv&quot;)</span>
+
+
+<span class="sd">    **Credits**</span>
+
+<span class="sd">    This implementation was created by Raashika and revised by M. Charan Teja under the guidance of Professor Rage Uday Kiran.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataframe</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes the MaxAbs object with a copy of the dataframe.</span>
@@ -128,6 +197,12 @@
 
 
 <div class="viewcode-block" id="MaxAbs.run"><a class="viewcode-back" href="../../../normalizationMaxAbs.html#geoanalytics.normalization.MaxAbs.MaxAbs.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Executes the MaxAbs scaling normalization on the dataset.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            pd.DataFrame: DataFrame containing &#39;x&#39;, &#39;y&#39;, and MaxAbs-normalized feature values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">startTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="n">xy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>

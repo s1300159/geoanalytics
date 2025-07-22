@@ -1,3 +1,25 @@
+# UnitVector Class for Feature Normalization Using Unit Vector Scaling
+
+# **Importing and Using the UnitVector Class in a Python Program**
+#
+#             import pandas as pd
+#
+#             from geoanalytics.normalization import UnitVector
+#
+#             df = pd.read_csv("input.csv")
+#
+#             transformer = UnitVector(df)
+#
+#             normalized_df = transformer.run()
+#
+#             transformer.getRuntime()
+#
+#             transformer.getMemoryUSS()
+#
+#             transformer.getMemoryRSS()
+#
+#             transformer.save("UnitVector.csv")
+#
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -24,6 +46,53 @@ from sklearn.preprocessing import Normalizer
 
 
 class UnitVector:
+    """
+    **About this algorithm**
+
+    :**Description**:
+        UnitVector performs feature normalization by scaling each row (feature vector)
+        of the dataset to have unit L2 norm (i.e., the sum of squares of each row equals 1).
+        This normalization is useful when you want to normalize across rows (samples)
+        rather than columns (features), such as in cosine similarity or direction-based analyses.
+
+    :**Parameters**:
+        - `dataframe` (*pd.DataFrame*): Input DataFrame containing 'x', 'y' coordinates and feature values.
+
+    :**Attributes**:
+        - **df** (*pd.DataFrame*): The original DataFrame with standardized column headers ('x', 'y', ...features).
+        - **normalizedDF** (*pd.DataFrame*): The L2-normalized output DataFrame.
+        - **startTime, endTime** (*float*): Runtime tracking timestamps.
+        - **memoryUSS, memoryRSS** (*float*): Memory consumption statistics in kilobytes.
+
+    **Execution methods**
+
+    **Calling from a Python program**
+
+    .. code-block:: python
+
+            import pandas as pd
+
+            from geoanalytics.normalization import UnitVector
+
+            df = pd.read_csv("input.csv")
+
+            transformer = UnitVector(df)
+
+            normalized_df = transformer.run()
+
+            transformer.getRuntime()
+
+            transformer.getMemoryUSS()
+
+            transformer.getMemoryRSS()
+
+            transformer.save("UnitVector.csv")
+
+
+    **Credits**
+
+    Developed by Raashika and M. Charan Teja, under the guidance of Professor Rage Uday Kiran.
+    """
     def __init__(self, dataframe):
         """
         Initializes the UnitVector object with a copy of the dataframe.
@@ -56,6 +125,12 @@ class UnitVector:
 
 
     def run(self):
+        """
+        Executes unit vector (L2) normalization on each row of the dataset.
+
+        Returns:
+            pd.DataFrame: DataFrame containing 'x', 'y' and normalized feature values.
+        """
 
         self.startTime = time.time()
         xy = self.df[['x', 'y']].reset_index(drop=True)

@@ -1,3 +1,26 @@
+# DecimalScaling Class for Normalizing Features Using Decimal Scaling Technique
+
+# **Importing and Using the DecimalScaling Class in a Python Program**
+#
+#             import pandas as pd
+#
+#             from geoanalytics.normalization import DecimalScaling
+#
+#             df = pd.read_csv("input.csv")
+#
+#             scaler = DecimalScaling(df)
+#
+#             normalized_df = scaler.run()
+#
+#             scaler.getRuntime()
+#
+#             scaler.getMemoryUSS()
+#
+#             scaler.getMemoryRSS()
+#
+#             scaler.save("DecimalScaling.csv")
+#
+
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -22,6 +45,53 @@ import numpy as np
 import pandas as pd
 
 class DecimalScaling:
+    """
+    **About this module**
+
+    :**Description**:
+        DecimalScaling is a normalization technique that transforms features by dividing them
+        by powers of 10 based on the maximum absolute value. This class normalizes all feature
+        columns (excluding coordinates) to scale them within a decimal range, while also tracking
+        memory usage and execution time.
+
+    :**Parameters**:
+        - `dataframe` (*pd.DataFrame*): Input DataFrame containing 'x', 'y', and feature columns.
+
+    :**Attributes**:
+        - **df** (*pd.DataFrame*) -- Original DataFrame with renamed columns.
+        - **normalizedDF** (*pd.DataFrame*) -- DataFrame after normalization.
+        - **startTime, endTime** (*float*) -- Timestamps for runtime tracking.
+        - **memoryUSS, memoryRSS** (*float*) -- Memory usage (USS and RSS) in kilobytes.
+
+    **Execution methods**
+
+    **Calling from a Python program**
+
+    .. code-block:: python
+
+            import pandas as pd
+
+            from geoanalytics.normalization import DecimalScaling
+
+            df = pd.read_csv("input.csv")
+
+            scaler = DecimalScaling(df)
+
+            normalized_df = scaler.run()
+
+            scaler.getRuntime()
+
+            scaler.getMemoryUSS()
+
+            scaler.getMemoryRSS()
+
+            scaler.save("DecimalScaling.csv")
+
+
+    **Credits**
+
+    This implementation was created by Raashika and revised by M. Charan Teja under the guidance of Professor Rage Uday Kiran.
+    """
     def __init__(self, dataframe):
         """
         Initializes the DecimalScaling object with a copy of the dataframe.
@@ -54,6 +124,12 @@ class DecimalScaling:
 
 
     def run(self):
+        """
+        Applies Decimal Scaling normalization to the input features.
+
+        Returns:
+            pd.DataFrame: Normalized DataFrame with 'x', 'y', and scaled features.
+        """
 
         self.startTime = time.time()
         xy = self.df[['x', 'y']].reset_index(drop=True)

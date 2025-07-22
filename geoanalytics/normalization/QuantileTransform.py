@@ -1,3 +1,26 @@
+# QuantileTransform Class for Feature Normalization Using Quantile Transformation
+
+# **Importing and Using the QuantileTransform Class in a Python Program**
+#
+#             import pandas as pd
+#
+#             from geoanalytics.normalization import QuantileTransform
+#
+#             df = pd.read_csv("input.csv")
+#
+#             scaler = QuantileTransform(df)
+#
+#             normalized_df = scaler.run()
+#
+#             scaler.getRuntime()
+#
+#             scaler.getMemoryUSS()
+#
+#             scaler.getMemoryRSS()
+#
+#             scaler.save("QuantileTransform.csv")
+#
+
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -24,6 +47,53 @@ from sklearn.preprocessing import QuantileTransformer
 
 
 class QuantileTransform:
+    """
+    **About this module**
+
+    :**Description**:
+        Quantile Transformation maps the data to a normal distribution by transforming features
+        to follow a uniform or normal distribution. This technique is robust to outliers and
+        useful for many machine learning algorithms requiring normally distributed data.
+        This class supports runtime and memory usage tracking.
+
+    :**Parameters**:
+        - `dataframe` (*pd.DataFrame*): Input DataFrame with 'x', 'y' coordinates and feature columns.
+
+    :**Attributes**:
+        - **df** (*pd.DataFrame*) -- Input DataFrame with standardized column names 'x', 'y', and features.
+        - **normalizedDF** (*pd.DataFrame*) -- DataFrame containing transformed features and coordinates.
+        - **startTime, endTime** (*float*) -- Timing markers for the transformation process.
+        - **memoryUSS, memoryRSS** (*float*) -- Memory usage metrics in kilobytes.
+
+    **Execution methods**
+
+    **Calling from a Python program**
+
+    .. code-block:: python
+
+            import pandas as pd
+
+            from geoanalytics.normalization import QuantileTransform
+
+            df = pd.read_csv("input.csv")
+
+            scaler = QuantileTransform(df)
+
+            normalized_df = scaler.run()
+
+            scaler.getRuntime()
+
+            scaler.getMemoryUSS()
+
+            scaler.getMemoryRSS()
+
+            scaler.save("QuantileTransform.csv")
+
+
+    **Credits**
+
+    This implementation was created by Raashika and revised by M. Charan Teja under the guidance of Professor Rage Uday Kiran.
+    """
     def __init__(self, dataframe):
         """
         Initializes the QuantileTransform object with a copy of the dataframe.
@@ -56,6 +126,12 @@ class QuantileTransform:
 
 
     def run(self):
+        """
+        Executes the quantile transformation on the dataset.
+
+        Returns:
+            pd.DataFrame: DataFrame with 'x', 'y', and quantile transformed feature columns.
+        """
 
         self.startTime = time.time()
         xy = self.df[['x', 'y']].reset_index(drop=True)

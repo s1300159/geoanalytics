@@ -101,6 +101,51 @@
 <dt class="sig sig-object py" id="geoanalytics.normalization.DecimalScaling.DecimalScaling">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.normalization.DecimalScaling.</span></span><span class="sig-name descname"><span class="pre">DecimalScaling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/normalization/DecimalScaling.html#DecimalScaling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.normalization.DecimalScaling.DecimalScaling" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>About this module</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DecimalScaling is a normalization technique that transforms features by dividing them
+by powers of 10 based on the maximum absolute value. This class normalizes all feature
+columns (excluding coordinates) to scale them within a decimal range, while also tracking
+memory usage and execution time.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><cite>dataframe</cite> (<em>pd.DataFrame</em>): Input DataFrame containing ‘x’, ‘y’, and feature columns.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – Original DataFrame with renamed columns.</p></li>
+<li><p><strong>normalizedDF</strong> (<em>pd.DataFrame</em>) – DataFrame after normalization.</p></li>
+<li><p><strong>startTime, endTime</strong> (<em>float</em>) – Timestamps for runtime tracking.</p></li>
+<li><p><strong>memoryUSS, memoryRSS</strong> (<em>float</em>) – Memory usage (USS and RSS) in kilobytes.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Execution methods</strong></p>
+<p><strong>Calling from a Python program</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">geoanalytics.normalization</span> <span class="kn">import</span> <span class="n">DecimalScaling</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;input.csv&quot;</span><span class="p">)</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">DecimalScaling</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">normalized_df</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">scaler</span><span class="o">.</span><span class="n">getRuntime</span><span class="p">()</span>
+
+<span class="n">scaler</span><span class="o">.</span><span class="n">getMemoryUSS</span><span class="p">()</span>
+
+<span class="n">scaler</span><span class="o">.</span><span class="n">getMemoryRSS</span><span class="p">()</span>
+
+<span class="n">scaler</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;DecimalScaling.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Credits</strong></p>
+<p>This implementation was created by Raashika and revised by M. Charan Teja under the guidance of Professor Rage Uday Kiran.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.normalization.DecimalScaling.DecimalScaling.getMemoryRSS">
 <span class="sig-name descname"><span class="pre">getMemoryRSS</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/normalization/DecimalScaling.html#DecimalScaling.getMemoryRSS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.normalization.DecimalScaling.DecimalScaling.getMemoryRSS" title="Permalink to this definition"></a></dt>
@@ -122,7 +167,16 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.normalization.DecimalScaling.DecimalScaling.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/geoanalytics/normalization/DecimalScaling.html#DecimalScaling.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.normalization.DecimalScaling.DecimalScaling.run" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Applies Decimal Scaling normalization to the input features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Normalized DataFrame with ‘x’, ‘y’, and scaled features.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geoanalytics.normalization.DecimalScaling.DecimalScaling.save">

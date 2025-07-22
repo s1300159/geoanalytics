@@ -70,7 +70,30 @@
            <div itemprop="articleBody">
              
   <h1>Source code for geoanalytics.normalization.DecimalScaling</h1><div class="highlight"><pre>
-<span></span><span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span></span><span class="c1"># DecimalScaling Class for Normalizing Features Using Decimal Scaling Technique</span>
+
+<span class="c1"># **Importing and Using the DecimalScaling Class in a Python Program**</span>
+<span class="c1">#</span>
+<span class="c1">#             import pandas as pd</span>
+<span class="c1">#</span>
+<span class="c1">#             from geoanalytics.normalization import DecimalScaling</span>
+<span class="c1">#</span>
+<span class="c1">#             df = pd.read_csv(&quot;input.csv&quot;)</span>
+<span class="c1">#</span>
+<span class="c1">#             scaler = DecimalScaling(df)</span>
+<span class="c1">#</span>
+<span class="c1">#             normalized_df = scaler.run()</span>
+<span class="c1">#</span>
+<span class="c1">#             scaler.getRuntime()</span>
+<span class="c1">#</span>
+<span class="c1">#             scaler.getMemoryUSS()</span>
+<span class="c1">#</span>
+<span class="c1">#             scaler.getMemoryRSS()</span>
+<span class="c1">#</span>
+<span class="c1">#             scaler.save(&quot;DecimalScaling.csv&quot;)</span>
+<span class="c1">#</span>
+
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Copyright (C)  2022 Rage Uday Kiran</span>
 
 <span class="s2">     This program is free software: you can redistribute it and/or modify</span>
@@ -94,6 +117,53 @@
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <div class="viewcode-block" id="DecimalScaling"><a class="viewcode-back" href="../../../normalizationDecimalScaling.html#geoanalytics.normalization.DecimalScaling.DecimalScaling">[docs]</a><span class="k">class</span> <span class="nc">DecimalScaling</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **About this module**</span>
+
+<span class="sd">    :**Description**:</span>
+<span class="sd">        DecimalScaling is a normalization technique that transforms features by dividing them</span>
+<span class="sd">        by powers of 10 based on the maximum absolute value. This class normalizes all feature</span>
+<span class="sd">        columns (excluding coordinates) to scale them within a decimal range, while also tracking</span>
+<span class="sd">        memory usage and execution time.</span>
+
+<span class="sd">    :**Parameters**:</span>
+<span class="sd">        - `dataframe` (*pd.DataFrame*): Input DataFrame containing &#39;x&#39;, &#39;y&#39;, and feature columns.</span>
+
+<span class="sd">    :**Attributes**:</span>
+<span class="sd">        - **df** (*pd.DataFrame*) -- Original DataFrame with renamed columns.</span>
+<span class="sd">        - **normalizedDF** (*pd.DataFrame*) -- DataFrame after normalization.</span>
+<span class="sd">        - **startTime, endTime** (*float*) -- Timestamps for runtime tracking.</span>
+<span class="sd">        - **memoryUSS, memoryRSS** (*float*) -- Memory usage (USS and RSS) in kilobytes.</span>
+
+<span class="sd">    **Execution methods**</span>
+
+<span class="sd">    **Calling from a Python program**</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">            import pandas as pd</span>
+
+<span class="sd">            from geoanalytics.normalization import DecimalScaling</span>
+
+<span class="sd">            df = pd.read_csv(&quot;input.csv&quot;)</span>
+
+<span class="sd">            scaler = DecimalScaling(df)</span>
+
+<span class="sd">            normalized_df = scaler.run()</span>
+
+<span class="sd">            scaler.getRuntime()</span>
+
+<span class="sd">            scaler.getMemoryUSS()</span>
+
+<span class="sd">            scaler.getMemoryRSS()</span>
+
+<span class="sd">            scaler.save(&quot;DecimalScaling.csv&quot;)</span>
+
+
+<span class="sd">    **Credits**</span>
+
+<span class="sd">    This implementation was created by Raashika and revised by M. Charan Teja under the guidance of Professor Rage Uday Kiran.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataframe</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes the DecimalScaling object with a copy of the dataframe.</span>
@@ -126,6 +196,12 @@
 
 
 <div class="viewcode-block" id="DecimalScaling.run"><a class="viewcode-back" href="../../../normalizationDecimalScaling.html#geoanalytics.normalization.DecimalScaling.DecimalScaling.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Applies Decimal Scaling normalization to the input features.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            pd.DataFrame: Normalized DataFrame with &#39;x&#39;, &#39;y&#39;, and scaled features.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">startTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="n">xy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>

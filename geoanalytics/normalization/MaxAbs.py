@@ -1,3 +1,26 @@
+# MaxAbs Class for Normalizing Features Using Maximum Absolute Scaling
+
+# **Importing and Using the MaxAbs Class in a Python Program**
+#
+#             import pandas as pd
+#
+#             from geoanalytics.normalization import MaxAbs
+#
+#             df = pd.read_csv("input.csv")
+#
+#             scaler = MaxAbs(df)
+#
+#             normalized_df = scaler.run()
+#
+#             scaler.getRuntime()
+#
+#             scaler.getMemoryUSS()
+#
+#             scaler.getMemoryRSS()
+#
+#             scaler.save("MaxAbs.csv")
+#
+
 __copyright__ = """
 Copyright (C)  2022 Rage Uday Kiran
 
@@ -24,6 +47,52 @@ from sklearn.preprocessing import MaxAbsScaler
 
 
 class MaxAbs:
+    """
+    **About this module**
+
+    :**Description**:
+        MaxAbs is a normalization technique that scales each feature by its maximum absolute value.
+        It is particularly useful when features contain both positive and negative values,
+        ensuring all values lie within the range [-1, 1]. This class also tracks runtime and memory usage.
+
+    :**Parameters**:
+        - `dataframe` (*pd.DataFrame*): Input DataFrame containing 'x', 'y', and feature columns.
+
+    :**Attributes**:
+        - **df** (*pd.DataFrame*) -- Original DataFrame with standardized column names.
+        - **normalizedDF** (*pd.DataFrame*) -- Output DataFrame after MaxAbs scaling.
+        - **startTime, endTime** (*float*) -- Time tracking variables.
+        - **memoryUSS, memoryRSS** (*float*) -- Memory usage in kilobytes (USS and RSS).
+
+    **Execution methods**
+
+    **Calling from a Python program**
+
+    .. code-block:: python
+
+            import pandas as pd
+
+            from geoanalytics.normalization import MaxAbs
+
+            df = pd.read_csv("input.csv")
+
+            scaler = MaxAbs(df)
+
+            normalized_df = scaler.run()
+
+            scaler.getRuntime()
+
+            scaler.getMemoryUSS()
+
+            scaler.getMemoryRSS()
+
+            scaler.save("MaxAbs.csv")
+
+
+    **Credits**
+
+    This implementation was created by Raashika and revised by M. Charan Teja under the guidance of Professor Rage Uday Kiran.
+    """
     def __init__(self, dataframe):
         """
         Initializes the MaxAbs object with a copy of the dataframe.
@@ -56,6 +125,12 @@ class MaxAbs:
 
 
     def run(self):
+        """
+        Executes the MaxAbs scaling normalization on the dataset.
+
+        Returns:
+            pd.DataFrame: DataFrame containing 'x', 'y', and MaxAbs-normalized feature values.
+        """
 
         self.startTime = time.time()
         xy = self.df[['x', 'y']].reset_index(drop=True)

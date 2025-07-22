@@ -70,7 +70,29 @@
            <div itemprop="articleBody">
              
   <h1>Source code for geoanalytics.normalization.UnitVector</h1><div class="highlight"><pre>
-<span></span><span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span></span><span class="c1"># UnitVector Class for Feature Normalization Using Unit Vector Scaling</span>
+
+<span class="c1"># **Importing and Using the UnitVector Class in a Python Program**</span>
+<span class="c1">#</span>
+<span class="c1">#             import pandas as pd</span>
+<span class="c1">#</span>
+<span class="c1">#             from geoanalytics.normalization import UnitVector</span>
+<span class="c1">#</span>
+<span class="c1">#             df = pd.read_csv(&quot;input.csv&quot;)</span>
+<span class="c1">#</span>
+<span class="c1">#             transformer = UnitVector(df)</span>
+<span class="c1">#</span>
+<span class="c1">#             normalized_df = transformer.run()</span>
+<span class="c1">#</span>
+<span class="c1">#             transformer.getRuntime()</span>
+<span class="c1">#</span>
+<span class="c1">#             transformer.getMemoryUSS()</span>
+<span class="c1">#</span>
+<span class="c1">#             transformer.getMemoryRSS()</span>
+<span class="c1">#</span>
+<span class="c1">#             transformer.save(&quot;UnitVector.csv&quot;)</span>
+<span class="c1">#</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Copyright (C)  2022 Rage Uday Kiran</span>
 
 <span class="s2">     This program is free software: you can redistribute it and/or modify</span>
@@ -96,6 +118,53 @@
 
 
 <div class="viewcode-block" id="UnitVector"><a class="viewcode-back" href="../../../normalizationUnitVector.html#geoanalytics.normalization.UnitVector.UnitVector">[docs]</a><span class="k">class</span> <span class="nc">UnitVector</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **About this algorithm**</span>
+
+<span class="sd">    :**Description**:</span>
+<span class="sd">        UnitVector performs feature normalization by scaling each row (feature vector)</span>
+<span class="sd">        of the dataset to have unit L2 norm (i.e., the sum of squares of each row equals 1).</span>
+<span class="sd">        This normalization is useful when you want to normalize across rows (samples)</span>
+<span class="sd">        rather than columns (features), such as in cosine similarity or direction-based analyses.</span>
+
+<span class="sd">    :**Parameters**:</span>
+<span class="sd">        - `dataframe` (*pd.DataFrame*): Input DataFrame containing &#39;x&#39;, &#39;y&#39; coordinates and feature values.</span>
+
+<span class="sd">    :**Attributes**:</span>
+<span class="sd">        - **df** (*pd.DataFrame*): The original DataFrame with standardized column headers (&#39;x&#39;, &#39;y&#39;, ...features).</span>
+<span class="sd">        - **normalizedDF** (*pd.DataFrame*): The L2-normalized output DataFrame.</span>
+<span class="sd">        - **startTime, endTime** (*float*): Runtime tracking timestamps.</span>
+<span class="sd">        - **memoryUSS, memoryRSS** (*float*): Memory consumption statistics in kilobytes.</span>
+
+<span class="sd">    **Execution methods**</span>
+
+<span class="sd">    **Calling from a Python program**</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">            import pandas as pd</span>
+
+<span class="sd">            from geoanalytics.normalization import UnitVector</span>
+
+<span class="sd">            df = pd.read_csv(&quot;input.csv&quot;)</span>
+
+<span class="sd">            transformer = UnitVector(df)</span>
+
+<span class="sd">            normalized_df = transformer.run()</span>
+
+<span class="sd">            transformer.getRuntime()</span>
+
+<span class="sd">            transformer.getMemoryUSS()</span>
+
+<span class="sd">            transformer.getMemoryRSS()</span>
+
+<span class="sd">            transformer.save(&quot;UnitVector.csv&quot;)</span>
+
+
+<span class="sd">    **Credits**</span>
+
+<span class="sd">    Developed by Raashika and M. Charan Teja, under the guidance of Professor Rage Uday Kiran.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataframe</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes the UnitVector object with a copy of the dataframe.</span>
@@ -128,6 +197,12 @@
 
 
 <div class="viewcode-block" id="UnitVector.run"><a class="viewcode-back" href="../../../normalizationUnitVector.html#geoanalytics.normalization.UnitVector.UnitVector.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Executes unit vector (L2) normalization on each row of the dataset.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            pd.DataFrame: DataFrame containing &#39;x&#39;, &#39;y&#39; and normalized feature values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">startTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="n">xy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
