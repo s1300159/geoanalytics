@@ -1,10 +1,14 @@
 sphinx
 sphinx_rtd_theme
-pandas
 
-requests~=2.32.3
+pandas
+numpy
+matplotlib~=3.10.3
 psutil~=7.0.0
 tqdm~=4.67.1
-numpy~=2.2.6
-matplotlib~=3.10.3
+requests~=2.32.3
 Deprecated~=1.2.18
+
+scikit-learn>=1.4.2
+fuzzy-c-means
+hdbscan
