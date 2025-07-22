@@ -42,25 +42,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../conversion.html">Conversion</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../imputation.html">Imputation</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../clustering.html">Clustering</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../patternMining.html">Pattern Mining</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../normalization.html">Normalization</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../scoreCalculator.html">Score Calculator</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../visualization.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Geoanalytics Modules</a></li>
 </ul>
 
         </div>
@@ -107,7 +89,7 @@
 <span class="c1">#           print(&quot;Clustered Data with Labels:\n&quot;, labels)</span>
 <span class="c1">#</span>
 <span class="c1">#           print(&quot;Cluster Centers:\n&quot;, centers)</span>
-
+<span class="c1">#</span>
 
 
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -179,7 +161,9 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataframe</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
 <span class="sd">        Initializes the KMeans object by standardizing the column order and copying the dataframe.</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
@@ -192,27 +176,35 @@
 
 <div class="viewcode-block" id="KMeans.getRuntime"><a class="viewcode-back" href="../../../geoanalytics.clustering.html#geoanalytics.clustering.KMeans.KMeans.getRuntime">[docs]</a>    <span class="k">def</span> <span class="nf">getRuntime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
 <span class="sd">        Computes and prints the runtime and USS memory used by the process.</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Execution time of proposed Algorithm:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">endTime</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">startTime</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="KMeans.getMemoryUSS"><a class="viewcode-back" href="../../../geoanalytics.clustering.html#geoanalytics.clustering.KMeans.KMeans.getMemoryUSS">[docs]</a>    <span class="k">def</span> <span class="nf">getMemoryUSS</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
 <span class="sd">        Prints the memory usage (USS) of the process in kilobytes.</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Memory (USS) of proposed Algorithm in KB:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">memoryUSS</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="KMeans.getMemoryRSS"><a class="viewcode-back" href="../../../geoanalytics.clustering.html#geoanalytics.clustering.KMeans.KMeans.getMemoryRSS">[docs]</a>    <span class="k">def</span> <span class="nf">getMemoryRSS</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
 <span class="sd">        Prints the memory usage (RSS) of the process in kilobytes.</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Memory (RSS) of proposed Algorithm in KB:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">memoryRSS</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="KMeans.elbowMethod"><a class="viewcode-back" href="../../../geoanalytics.clustering.html#geoanalytics.clustering.KMeans.KMeans.elbowMethod">[docs]</a>    <span class="k">def</span> <span class="nf">elbowMethod</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
 <span class="sd">        Plots the elbow graph to help determine the optimal number of clusters (k).</span>
 
 <span class="sd">        Uses WCSS (Within-Cluster Sum of Squares) and excludes &#39;x&#39;, &#39;y&#39; from the computation.</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">wcss</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">k_values</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
@@ -230,14 +222,17 @@
 
 <div class="viewcode-block" id="KMeans.run"><a class="viewcode-back" href="../../../geoanalytics.clustering.html#geoanalytics.clustering.KMeans.KMeans.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
 <span class="sd">        Applies KMeans clustering to the dataset, excluding &#39;x&#39; and &#39;y&#39;, and returns labeled data and cluster centers.</span>
 
 <span class="sd">        Returns:</span>
 
 <span class="sd">        labels : pandas.DataFrame</span>
 <span class="sd">            DataFrame containing &#39;x&#39;, &#39;y&#39;, and the predicted cluster labels.</span>
+
 <span class="sd">        centers : numpy.ndarray</span>
 <span class="sd">            Array of shape (k, n_features) representing the coordinates of cluster centers.</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">startTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -257,7 +252,9 @@
 
 <div class="viewcode-block" id="KMeans.save"><a class="viewcode-back" href="../../../geoanalytics.clustering.html#geoanalytics.clustering.KMeans.KMeans.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outputFileLabels</span><span class="o">=</span><span class="s1">&#39;KMeansLabels.csv&#39;</span><span class="p">,</span> <span class="n">outputFileCenters</span><span class="o">=</span><span class="s1">&#39;KMeansCenters.csv&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
 <span class="sd">        Saves the imputed DataFrame to a CSV file.</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">labelsDF</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RasterDF2DB &mdash; geoanalytics 2025.07.22 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="raster2tsv" href="conversionraster2tsv.html" />
+    <link rel="prev" title="Raster2CSV" href="conversionRaster2CSV.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            geoanalytics
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Geoanalytics Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="conversion.html">Conversion</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="conversionCSV2Parquet.html">CSV2Parquet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionCSV2Raster.html">CSV2Raster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionDF2DB.html">DF2DB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionImg2Tiff.html">Img2Tiff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionLBL2Tiff.html">LBL2Tiff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionParquet2CSV.html">Parquet2CSV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionPixels2Point.html">Pixels2Point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionPoint2Pixels.html">Point2Pixels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionRaster2CSV.html">Raster2CSV</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">RasterDF2DB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionraster2tsv.html">raster2tsv</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../imputation/imputation.html">Imputation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/clustering.html">Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../patternMining/patternMining.html">Pattern Mining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../normalization/normalization.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scoreCalculator/scoreCalculator.html">Score Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualization/visualization.html">Visualization</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">geoanalytics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../modules.html">Geoanalytics Modules</a></li>
+          <li class="breadcrumb-item"><a href="conversion.html">Conversion</a></li>
+      <li class="breadcrumb-item active">RasterDF2DB</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/conversion/conversionRasterDF2DB.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-geoanalytics.conversion.RasterDF2DB">
+<span id="rasterdf2db"></span><h1>RasterDF2DB<a class="headerlink" href="#module-geoanalytics.conversion.RasterDF2DB" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="geoanalytics.conversion.RasterDF2DB.RasterDF2DB">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.conversion.RasterDF2DB.</span></span><span class="sig-name descname"><span class="pre">RasterDF2DB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/geoanalytics/conversion/RasterDF2DB.html#RasterDF2DB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.RasterDF2DB.RasterDF2DB" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>About this algorithm</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>RasterDF2DB is a converter that takes a raster-format DataFrame (x, y, bands) and transforms it into various spatio-temporal database formats using DF2DB methods.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>dataframe</strong> (<em>pandas.DataFrame</em>): Input DataFrame with columns [x, y, band1, band2, …, bandN].</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>): A copy of the input DataFrame with renamed columns.</p></li>
+<li><p><strong>transactionDF</strong> (<em>DataFrame</em>): Transposed DataFrame used for database conversion.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Execution methods</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">geoanalytics.conversion</span> <span class="kn">import</span> <span class="n">RasterDF2DB</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;output.csv&#39;</span><span class="p">)</span>
+
+<span class="n">converter</span> <span class="o">=</span> <span class="n">RasterDF2DB</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">converter</span><span class="o">.</span><span class="n">prepareTransactionalDataframe</span><span class="p">()</span>
+
+<span class="n">converter</span><span class="o">.</span><span class="n">convertToTransactionalDB</span><span class="p">(</span><span class="n">DBname</span><span class="o">=</span><span class="s1">&#39;transactionDB.csv&#39;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="o">=</span><span class="mi">4000</span><span class="p">)</span>
+
+<span class="n">converter</span><span class="o">.</span><span class="n">convertToTemporalDB</span><span class="p">(</span><span class="n">DBname</span><span class="o">=</span><span class="s1">&#39;temporalDB.csv&#39;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="o">=</span><span class="mi">4000</span><span class="p">)</span>
+
+<span class="n">converter</span><span class="o">.</span><span class="n">convertToUtilityDB</span><span class="p">(</span><span class="n">DBname</span><span class="o">=</span><span class="s1">&#39;utilityDB.csv&#39;</span><span class="p">)</span>
+
+<span class="n">converter</span><span class="o">.</span><span class="n">convertToGeoReferencedTransactionalDB</span><span class="p">(</span><span class="n">DBname</span><span class="o">=</span><span class="s1">&#39;geoTransactionDB.csv&#39;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="o">=</span><span class="mi">4000</span><span class="p">)</span>
+
+<span class="n">converter</span><span class="o">.</span><span class="n">convertToGeoReferencedTemporalDB</span><span class="p">(</span><span class="n">DBname</span><span class="o">=</span><span class="s1">&#39;geoTemporalDB.csv&#39;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="o">=</span><span class="mi">4000</span><span class="p">)</span>
+
+<span class="n">converter</span><span class="o">.</span><span class="n">convertToUncertainTransactionalDB</span><span class="p">(</span><span class="n">DBname</span><span class="o">=</span><span class="s1">&#39;uncertainDB.csv&#39;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="o">=</span><span class="mi">4000</span><span class="p">)</span>
+
+<span class="n">converter</span><span class="o">.</span><span class="n">convertToMultipleTimeSeries</span><span class="p">(</span><span class="n">DBname</span><span class="o">=</span><span class="s1">&#39;multiTimeSeriesDB.csv&#39;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="n">thresholdValue</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Credits</strong></p>
+<p>This implementation was created and revised  under the guidance of Professor Rage Uday Kiran.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToGeoReferencedTemporalDB">
+<span class="sig-name descname"><span class="pre">convertToGeoReferencedTemporalDB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DBname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholdValue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/geoanalytics/conversion/RasterDF2DB.html#RasterDF2DB.convertToGeoReferencedTemporalDB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToGeoReferencedTemporalDB" title="Permalink to this definition"></a></dt>
+<dd><p>Converts to a geo-referenced temporal database format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>DBname</strong> – Output file name.</p></li>
+<li><p><strong>condition</strong> – Filtering condition.</p></li>
+<li><p><strong>thresholdValue</strong> – Threshold value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToGeoReferencedTransactionalDB">
+<span class="sig-name descname"><span class="pre">convertToGeoReferencedTransactionalDB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DBname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholdValue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/geoanalytics/conversion/RasterDF2DB.html#RasterDF2DB.convertToGeoReferencedTransactionalDB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToGeoReferencedTransactionalDB" title="Permalink to this definition"></a></dt>
+<dd><p>Converts to a geo-referenced transactional database format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>DBname</strong> – Output file name.</p></li>
+<li><p><strong>condition</strong> – Filtering condition.</p></li>
+<li><p><strong>thresholdValue</strong> – Threshold value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToMultipleTimeSeries">
+<span class="sig-name descname"><span class="pre">convertToMultipleTimeSeries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DBname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholdValue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/geoanalytics/conversion/RasterDF2DB.html#RasterDF2DB.convertToMultipleTimeSeries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToMultipleTimeSeries" title="Permalink to this definition"></a></dt>
+<dd><p>Converts data into multiple time series format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>DBname</strong> – Output file name.</p></li>
+<li><p><strong>condition</strong> – Filtering condition.</p></li>
+<li><p><strong>thresholdValue</strong> – Threshold value.</p></li>
+<li><p><strong>interval</strong> – Interval of time steps to be used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToTemporalDB">
+<span class="sig-name descname"><span class="pre">convertToTemporalDB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DBname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholdValue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/geoanalytics/conversion/RasterDF2DB.html#RasterDF2DB.convertToTemporalDB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToTemporalDB" title="Permalink to this definition"></a></dt>
+<dd><p>Converts to a temporal database format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>DBname</strong> – Output file name.</p></li>
+<li><p><strong>condition</strong> – Filtering condition.</p></li>
+<li><p><strong>thresholdValue</strong> – Threshold value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToTransactionalDB">
+<span class="sig-name descname"><span class="pre">convertToTransactionalDB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DBname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholdValue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/geoanalytics/conversion/RasterDF2DB.html#RasterDF2DB.convertToTransactionalDB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToTransactionalDB" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the transactional DataFrame into a basic transactional database format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>DBname</strong> – Output file name for the database.</p></li>
+<li><p><strong>condition</strong> – Filtering condition (e.g., ‘&gt;=’).</p></li>
+<li><p><strong>thresholdValue</strong> – Value threshold to consider.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToUncertainTransactionalDB">
+<span class="sig-name descname"><span class="pre">convertToUncertainTransactionalDB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DBname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholdValue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/geoanalytics/conversion/RasterDF2DB.html#RasterDF2DB.convertToUncertainTransactionalDB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToUncertainTransactionalDB" title="Permalink to this definition"></a></dt>
+<dd><p>Converts to an uncertain transactional database format (for probabilistic scenarios).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>DBname</strong> – Output file name.</p></li>
+<li><p><strong>condition</strong> – Filtering condition.</p></li>
+<li><p><strong>thresholdValue</strong> – Threshold value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToUtilityDB">
+<span class="sig-name descname"><span class="pre">convertToUtilityDB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DBname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/geoanalytics/conversion/RasterDF2DB.html#RasterDF2DB.convertToUtilityDB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.convertToUtilityDB" title="Permalink to this definition"></a></dt>
+<dd><p>Converts to a utility database format (with weights).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>DBname</strong> – Output file name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.RasterDF2DB.RasterDF2DB.prepareTransactionalDataframe">
+<span class="sig-name descname"><span class="pre">prepareTransactionalDataframe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/geoanalytics/conversion/RasterDF2DB.html#RasterDF2DB.prepareTransactionalDataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.RasterDF2DB.RasterDF2DB.prepareTransactionalDataframe" title="Permalink to this definition"></a></dt>
+<dd><p>Prepares the transactional format of the DataFrame.</p>
+<p>Converts [x, y, band1, band2, …, bandN] format into a transposed format where each spatial point becomes a column and rows represent time intervals.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="conversionRaster2CSV.html" class="btn btn-neutral float-left" title="Raster2CSV" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="conversionraster2tsv.html" class="btn btn-neutral float-right" title="raster2tsv" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RAGE Uday Kiran.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -42,25 +42,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../conversion.html">Conversion</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../imputation.html">Imputation</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../clustering.html">Clustering</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../patternMining.html">Pattern Mining</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../normalization.html">Normalization</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../scoreCalculator.html">Score Calculator</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../visualization.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Geoanalytics Modules</a></li>
 </ul>
 
         </div>
@@ -111,7 +93,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<div class="viewcode-block" id="LogTransformation"><a class="viewcode-back" href="../../../normalizationLogTransformation.html#geoanalytics.normalization.LogTransformation.LogTransformation">[docs]</a><span class="k">class</span> <span class="nc">LogTransformation</span><span class="p">:</span>
+<div class="viewcode-block" id="LogTransformation"><a class="viewcode-back" href="../../../normalization/normalizationLogTransformation.html#geoanalytics.normalization.LogTransformation.LogTransformation">[docs]</a><span class="k">class</span> <span class="nc">LogTransformation</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataframe</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes the LogTransformation object with a copy of the dataframe.</span>
@@ -124,26 +106,26 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">memoryUSS</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">memoryRSS</span> <span class="o">=</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="LogTransformation.getRuntime"><a class="viewcode-back" href="../../../normalizationLogTransformation.html#geoanalytics.normalization.LogTransformation.LogTransformation.getRuntime">[docs]</a>    <span class="k">def</span> <span class="nf">getRuntime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="LogTransformation.getRuntime"><a class="viewcode-back" href="../../../normalization/normalizationLogTransformation.html#geoanalytics.normalization.LogTransformation.LogTransformation.getRuntime">[docs]</a>    <span class="k">def</span> <span class="nf">getRuntime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Prints the total runtime of the clustering algorithm.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Execution time of proposed Algorithm:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">endTime</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">startTime</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="LogTransformation.getMemoryUSS"><a class="viewcode-back" href="../../../normalizationLogTransformation.html#geoanalytics.normalization.LogTransformation.LogTransformation.getMemoryUSS">[docs]</a>    <span class="k">def</span> <span class="nf">getMemoryUSS</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="LogTransformation.getMemoryUSS"><a class="viewcode-back" href="../../../normalization/normalizationLogTransformation.html#geoanalytics.normalization.LogTransformation.LogTransformation.getMemoryUSS">[docs]</a>    <span class="k">def</span> <span class="nf">getMemoryUSS</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Prints the memory usage (USS) of the process in kilobytes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Memory (USS) of proposed Algorithm in KB:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">memoryUSS</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="LogTransformation.getMemoryRSS"><a class="viewcode-back" href="../../../normalizationLogTransformation.html#geoanalytics.normalization.LogTransformation.LogTransformation.getMemoryRSS">[docs]</a>    <span class="k">def</span> <span class="nf">getMemoryRSS</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="LogTransformation.getMemoryRSS"><a class="viewcode-back" href="../../../normalization/normalizationLogTransformation.html#geoanalytics.normalization.LogTransformation.LogTransformation.getMemoryRSS">[docs]</a>    <span class="k">def</span> <span class="nf">getMemoryRSS</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Prints the memory usage (RSS) of the process in kilobytes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Memory (RSS) of proposed Algorithm in KB:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">memoryRSS</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="LogTransformation.run"><a class="viewcode-back" href="../../../normalizationLogTransformation.html#geoanalytics.normalization.LogTransformation.LogTransformation.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="LogTransformation.run"><a class="viewcode-back" href="../../../normalization/normalizationLogTransformation.html#geoanalytics.normalization.LogTransformation.LogTransformation.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">startTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="n">xy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -160,7 +142,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalizedDF</span></div>
 
 
-<div class="viewcode-block" id="LogTransformation.save"><a class="viewcode-back" href="../../../normalizationLogTransformation.html#geoanalytics.normalization.LogTransformation.LogTransformation.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outputFile</span><span class="o">=</span><span class="s1">&#39;LogTransformation.csv&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="LogTransformation.save"><a class="viewcode-back" href="../../../normalization/normalizationLogTransformation.html#geoanalytics.normalization.LogTransformation.LogTransformation.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outputFile</span><span class="o">=</span><span class="s1">&#39;LogTransformation.csv&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Saves the Normalized DataFrame to a CSV file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>

@@ -17,7 +17,7 @@
 #           print("Clustered Data with Labels:\n", labels)
 #
 #           print("Cluster Centers:\n", centers)
-
+#
 
 
 __copyright__ = """
@@ -89,7 +89,9 @@ class KMeans:
     """
     def __init__(self, dataframe):
         """
+
         Initializes the KMeans object by standardizing the column order and copying the dataframe.
+
         """
         self.df = dataframe.copy()
         self.df.columns = ['x', 'y'] + list(self.df.columns[2:])
@@ -102,27 +104,35 @@ class KMeans:
 
     def getRuntime(self):
         """
+
         Computes and prints the runtime and USS memory used by the process.
+
         """
         print("Total Execution time of proposed Algorithm:", self.endTime - self.startTime, "seconds")
 
     def getMemoryUSS(self):
         """
+
         Prints the memory usage (USS) of the process in kilobytes.
+
         """
         print("Memory (USS) of proposed Algorithm in KB:", self.memoryUSS)
 
     def getMemoryRSS(self):
         """
+
         Prints the memory usage (RSS) of the process in kilobytes.
+
         """
         print("Memory (RSS) of proposed Algorithm in KB:", self.memoryRSS)
 
     def elbowMethod(self):
         """
+
         Plots the elbow graph to help determine the optimal number of clusters (k).
 
         Uses WCSS (Within-Cluster Sum of Squares) and excludes 'x', 'y' from the computation.
+
         """
         wcss = []
         k_values = range(1, 11)
@@ -140,14 +150,17 @@ class KMeans:
 
     def run(self, k = 4, max_iter=100):
         """
+
         Applies KMeans clustering to the dataset, excluding 'x' and 'y', and returns labeled data and cluster centers.
 
         Returns:
 
         labels : pandas.DataFrame
             DataFrame containing 'x', 'y', and the predicted cluster labels.
+
         centers : numpy.ndarray
             Array of shape (k, n_features) representing the coordinates of cluster centers.
+
         """
         self.startTime = time.time()
         data = self.df.drop(['x', 'y'], axis=1)
@@ -167,7 +180,9 @@ class KMeans:
 
     def save(self, outputFileLabels='KMeansLabels.csv', outputFileCenters='KMeansCenters.csv'):
         """
+
         Saves the imputed DataFrame to a CSV file.
+
         """
         if self.labelsDF is not None:
             try:

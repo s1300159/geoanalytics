@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DF2DB &mdash; geoanalytics 2025.07.22 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Img2Tiff" href="conversionImg2Tiff.html" />
+    <link rel="prev" title="CSV2Raster" href="conversionCSV2Raster.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            geoanalytics
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Geoanalytics Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="conversion.html">Conversion</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="conversionCSV2Parquet.html">CSV2Parquet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionCSV2Raster.html">CSV2Raster</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">DF2DB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionImg2Tiff.html">Img2Tiff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionLBL2Tiff.html">LBL2Tiff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionParquet2CSV.html">Parquet2CSV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionPixels2Point.html">Pixels2Point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionPoint2Pixels.html">Point2Pixels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionRaster2CSV.html">Raster2CSV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionRasterDF2DB.html">RasterDF2DB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conversionraster2tsv.html">raster2tsv</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../imputation/imputation.html">Imputation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/clustering.html">Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../patternMining/patternMining.html">Pattern Mining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../normalization/normalization.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scoreCalculator/scoreCalculator.html">Score Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualization/visualization.html">Visualization</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">geoanalytics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../modules.html">Geoanalytics Modules</a></li>
+          <li class="breadcrumb-item"><a href="conversion.html">Conversion</a></li>
+      <li class="breadcrumb-item active">DF2DB</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/conversion/conversionDF2DB.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-geoanalytics.conversion.DF2DB">
+<span id="df2db"></span><h1>DF2DB<a class="headerlink" href="#module-geoanalytics.conversion.DF2DB" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="geoanalytics.conversion.DF2DB.DF2DB">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geoanalytics.conversion.DF2DB.</span></span><span class="sig-name descname"><span class="pre">DF2DB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputDF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DFtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dense'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/geoanalytics/conversion/DF2DB.html#DF2DB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.DF2DB.DF2DB" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This class will create database for given DataFrame based on Threshold values and conditions are defined in the class.
+Converts Dataframe into sparse or dense dataframes.</p>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="field-list simple">
+<dt class="field-odd">param inputDF<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame :
+It is sparse or dense DataFrame</p>
+</dd>
+<dt class="field-even">param thresholdValue<span class="colon">:</span></dt>
+<dd class="field-even"><p>int or float :
+It is threshold value of all item</p>
+</dd>
+<dt class="field-odd">param condition<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str :
+It is condition of all item</p>
+</dd>
+<dt class="field-even">param DFtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>str :
+It is DataFrame type. It should be sparse or dense. Default DF is sparse.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>:param memoryUSS<span class="classifier">float</span></dt><dd><p>To store the total amount of USS memory consumed by the program</p>
+</dd>
+<dt>:param memoryRSS<span class="classifier">float</span></dt><dd><p>To store the total amount of RSS memory consumed by the program</p>
+</dd>
+<dt>:param startTime<span class="classifier">float</span></dt><dd><p>To record the start time of the mining process</p>
+</dd>
+<dt>endTime<span class="classifier">float</span></dt><dd><p>To record the completion time of the mining process</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Importing this algorithm into a python program</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PAMI.extras.DF2DB</span> <span class="kn">import</span> <span class="n">DF2DB</span> <span class="k">as</span> <span class="n">db</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">DF2DB</span><span class="p">(</span><span class="n">idf</span><span class="p">,</span> <span class="s2">&quot;sparse/dense&quot;</span><span class="p">)</span>
+
+<span class="n">obj</span><span class="o">.</span><span class="n">convert2Transactional</span><span class="p">(</span><span class="s2">&quot;outputFileName&quot;</span><span class="p">,</span><span class="n">condition</span><span class="p">,</span><span class="n">threshold</span><span class="p">)</span> <span class="c1"># To create transactional database</span>
+
+<span class="n">obj</span><span class="o">.</span><span class="n">convert2Temporal</span><span class="p">(</span><span class="s2">&quot;outputFileName&quot;</span><span class="p">,</span><span class="n">condition</span><span class="p">,</span><span class="n">threshold</span><span class="p">)</span> <span class="c1"># To create temporal database</span>
+
+<span class="n">obj</span><span class="o">.</span><span class="n">convert2Utility</span><span class="p">(</span><span class="s2">&quot;outputFileName&quot;</span><span class="p">,</span><span class="n">condition</span><span class="p">,</span><span class="n">threshold</span><span class="p">)</span> <span class="c1"># To create utility database</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.DF2DB.DF2DB.convert2MultipleTimeSeries">
+<span class="sig-name descname"><span class="pre">convert2MultipleTimeSeries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholdValue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/geoanalytics/conversion/DF2DB.html#DF2DB.convert2MultipleTimeSeries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.DF2DB.DF2DB.convert2MultipleTimeSeries" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Create the multiple time series database.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>oFile</strong> (<em>str</em>) – Write multiple time series database into outputFile.</p></li>
+<li><p><strong>interval</strong> (<em>int</em>) – Breaks the given timeseries into intervals.</p></li>
+<li><p><strong>condition</strong> – It is condition to judge the value in dataframe</p></li>
+<li><p><strong>thresholdValue</strong> (<em>int</em><em> or </em><em>float</em>) – User defined value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.DF2DB.DF2DB.convert2TemporalDatabase">
+<span class="sig-name descname"><span class="pre">convert2TemporalDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholdValue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/geoanalytics/conversion/DF2DB.html#DF2DB.convert2TemporalDatabase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.DF2DB.DF2DB.convert2TemporalDatabase" title="Permalink to this definition"></a></dt>
+<dd><p>create temporal database and return oFile name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oFile</strong> (<em>str</em>) – file name or path to store database</p></li>
+<li><p><strong>condition</strong> (<em>str</em>) – It is condition to judge the value</p></li>
+<li><p><strong>thresholdValue</strong> (<em>int</em><em> or </em><em>float</em>) – user defined threshold value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.DF2DB.DF2DB.convert2TransactionalDatabase">
+<span class="sig-name descname"><span class="pre">convert2TransactionalDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholdValue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/geoanalytics/conversion/DF2DB.html#DF2DB.convert2TransactionalDatabase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.DF2DB.DF2DB.convert2TransactionalDatabase" title="Permalink to this definition"></a></dt>
+<dd><p>create transactional database and return oFileName</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oFile</strong> (<em>str</em>) – file name or path to store database</p></li>
+<li><p><strong>condition</strong> (<em>str</em>) – It is condition to judge the value</p></li>
+<li><p><strong>thresholdValue</strong> (<em>int</em><em> or </em><em>float</em>) – user defined threshold value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.DF2DB.DF2DB.convert2UncertainTransactionalDatabase">
+<span class="sig-name descname"><span class="pre">convert2UncertainTransactionalDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholdValue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/geoanalytics/conversion/DF2DB.html#DF2DB.convert2UncertainTransactionalDatabase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.DF2DB.DF2DB.convert2UncertainTransactionalDatabase" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.DF2DB.DF2DB.convert2UtilityDatabase">
+<span class="sig-name descname"><span class="pre">convert2UtilityDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/geoanalytics/conversion/DF2DB.html#DF2DB.convert2UtilityDatabase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.DF2DB.DF2DB.convert2UtilityDatabase" title="Permalink to this definition"></a></dt>
+<dd><p>create utility database and return oFile name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>oFile</strong> (<em>str</em>) – file name or path to store database</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.DF2DB.DF2DB.convert2geoReferencedTemporalDatabase">
+<span class="sig-name descname"><span class="pre">convert2geoReferencedTemporalDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholdValue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/geoanalytics/conversion/DF2DB.html#DF2DB.convert2geoReferencedTemporalDatabase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.DF2DB.DF2DB.convert2geoReferencedTemporalDatabase" title="Permalink to this definition"></a></dt>
+<dd><p>create temporal database and return oFile name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oFile</strong> (<em>str</em>) – file name or path to store database</p></li>
+<li><p><strong>condition</strong> (<em>str</em>) – It is condition to judge the value</p></li>
+<li><p><strong>thresholdValue</strong> (<em>int</em><em> or </em><em>float</em>) – user defined threshold value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.DF2DB.DF2DB.convert2geoReferencedTransactionalDatabase">
+<span class="sig-name descname"><span class="pre">convert2geoReferencedTransactionalDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholdValue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/geoanalytics/conversion/DF2DB.html#DF2DB.convert2geoReferencedTransactionalDatabase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.DF2DB.DF2DB.convert2geoReferencedTransactionalDatabase" title="Permalink to this definition"></a></dt>
+<dd><p>create transactional database and return oFileName</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oFile</strong> (<em>str</em>) – file name or path to store database</p></li>
+<li><p><strong>condition</strong> (<em>str</em>) – It is condition to judge the value</p></li>
+<li><p><strong>thresholdValue</strong> (<em>int</em><em> or </em><em>float</em>) – user defined threshold value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.DF2DB.DF2DB.getMemoryRSS">
+<span class="sig-name descname"><span class="pre">getMemoryRSS</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/geoanalytics/conversion/DF2DB.html#DF2DB.getMemoryRSS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.DF2DB.DF2DB.getMemoryRSS" title="Permalink to this definition"></a></dt>
+<dd><p>Total amount of RSS memory consumed by the mining process will be retrieved from this function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>returning RSS memory consumed by the mining process</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.DF2DB.DF2DB.getMemoryUSS">
+<span class="sig-name descname"><span class="pre">getMemoryUSS</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/geoanalytics/conversion/DF2DB.html#DF2DB.getMemoryUSS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.DF2DB.DF2DB.getMemoryUSS" title="Permalink to this definition"></a></dt>
+<dd><p>Total amount of USS memory consumed by the mining process will be retrieved from this function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>returning USS memory consumed by the mining process</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geoanalytics.conversion.DF2DB.DF2DB.getRuntime">
+<span class="sig-name descname"><span class="pre">getRuntime</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/geoanalytics/conversion/DF2DB.html#DF2DB.getRuntime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geoanalytics.conversion.DF2DB.DF2DB.getRuntime" title="Permalink to this definition"></a></dt>
+<dd><p>Calculating the total amount of runtime taken by the mining process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>returning total amount of runtime taken by the mining process</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="conversionCSV2Raster.html" class="btn btn-neutral float-left" title="CSV2Raster" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="conversionImg2Tiff.html" class="btn btn-neutral float-right" title="Img2Tiff" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RAGE Uday Kiran.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

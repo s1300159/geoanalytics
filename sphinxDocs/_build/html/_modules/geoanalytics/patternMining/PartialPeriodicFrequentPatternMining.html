@@ -42,25 +42,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../conversion.html">Conversion</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../imputation.html">Imputation</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../clustering.html">Clustering</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../patternMining.html">Pattern Mining</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../normalization.html">Normalization</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../scoreCalculator.html">Score Calculator</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../visualization.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Geoanalytics Modules</a></li>
 </ul>
 
         </div>
@@ -111,11 +93,11 @@
 <span class="kn">from</span> <span class="nn">PAMI.partialPeriodicFrequentPattern.basic</span> <span class="kn">import</span> <span class="n">GPFgrowth</span>
 <span class="kn">from</span> <span class="nn">.abstract</span> <span class="kn">import</span> <span class="n">PatternMiner</span>
 
-<div class="viewcode-block" id="PartialPeriodicFrequentPatternMining"><a class="viewcode-back" href="../../../geoanalytics.patternMining.html#geoanalytics.patternMining.PartialPeriodicFrequentPatternMining.PartialPeriodicFrequentPatternMining">[docs]</a><span class="k">class</span> <span class="nc">PartialPeriodicFrequentPatternMining</span><span class="p">(</span><span class="n">PatternMiner</span><span class="p">):</span>
+<div class="viewcode-block" id="PartialPeriodicFrequentPatternMining"><a class="viewcode-back" href="../../../patternMining/PMPartialPeriodicFrequentPatternMining.html#geoanalytics.patternMining.PartialPeriodicFrequentPatternMining.PartialPeriodicFrequentPatternMining">[docs]</a><span class="k">class</span> <span class="nc">PartialPeriodicFrequentPatternMining</span><span class="p">(</span><span class="n">PatternMiner</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">_create_database</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">TemporalDatabase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputFile</span><span class="p">)</span>
 
-<div class="viewcode-block" id="PartialPeriodicFrequentPatternMining.run"><a class="viewcode-back" href="../../../geoanalytics.patternMining.html#geoanalytics.patternMining.PartialPeriodicFrequentPatternMining.PartialPeriodicFrequentPatternMining.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minSupport</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">maxPer</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">minPR</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<div class="viewcode-block" id="PartialPeriodicFrequentPatternMining.run"><a class="viewcode-back" href="../../../patternMining/PMPartialPeriodicFrequentPatternMining.html#geoanalytics.patternMining.PartialPeriodicFrequentPatternMining.PartialPeriodicFrequentPatternMining.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minSupport</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">maxPer</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">minPR</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">miner</span> <span class="o">=</span> <span class="n">GPFgrowth</span><span class="o">.</span><span class="n">GPFgrowth</span><span class="p">(</span><span class="n">iFile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputFile</span><span class="p">,</span> <span class="n">minSup</span> <span class="o">=</span> <span class="n">minSupport</span><span class="p">,</span> <span class="n">maxPer</span> <span class="o">=</span> <span class="n">maxPer</span><span class="p">,</span> <span class="n">minPR</span> <span class="o">=</span> <span class="n">minPR</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">miner</span><span class="o">.</span><span class="n">mine</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">miner</span><span class="o">.</span><span class="n">printResults</span><span class="p">()</span></div></div>
