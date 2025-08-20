@@ -22,11 +22,8 @@
 # Table of Contents
 
 - [Introduction](#introduction)
-- [Development process](#flow-chart-of-developing-algorithms-in-geoAnalytics)
-- [Inputs and outputs of a knowledge discovery algorithm](#inputs-and-outputs-of-an-algorithm-in-geoAnalytics)
 - [Recent updates](#recent-updates)
 - [Features](#features)
-- [Installing GDAL](#Installing-GDAL-Package)
 - [Maintenance](#Maintenance)
 - [Try your first geoAnalytics program](#try-your-first-geoAnalytics-program)
 - [License](#License)
@@ -44,18 +41,6 @@ geoAnalytics is an open-source Python-based Machine Learning library developed t
 useful information hidden in the raster data. The algorithms provided in this library cover a wide-spectrum 
 of machine learning tasks, such as imputation, image fusion, clustering, classification, one class 
 classification, and pattern mining. This library being platform independent can run any operating system.
-
-***
-# Flow Chart of Developing Algorithms in geoAnalytics
-
-![geoAnalytics production process](https://github.com/UdayLab/geoanalytics/blob/main/images/geoAnalyticsLibrary.png?raw=true)
-
-
-<!--- ![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true) ---> 
-***
-# Inputs and Outputs of an Algorithm in geoAnalytics
-
-![Inputs and Outputs](https://github.com/UdayLab/geoanalytics/blob/main/images/inputsOutputsOfAnAlgorithm.png?raw=true)
 
 ***
 # Recent Updates
@@ -83,71 +68,19 @@ Total number of algorithms: 50+
 - 🐻 Ease of use
 
 ***
-# Installing GDAL Package
-`GDAL` is an important toolkit in our library. It is for converting the raster data in any format into a human readable text or CSV format.
-We have present the methods to install this toolkit using Conda environment on a machine running Ubuntu operating system.
-
-
-    sudo apt-get update && sudo apt upgrade -y && sudo apt autoremove
-
-    sudo apt-get install -y cdo nco gdal-bin libgdal-dev
-    
-    
-    pip install --global-option=build_ext --global-option="-I/usr/include/gdal" GDAL==`gdal-config --version`
-
-
-    python -m pip install --upgrade pip setuptools wheel
-    python -m pip install --upgrade gdal 
-
-If the above two commands have failed to install gdal, then execute the following commands:
-
-    conda install -c conda-forge libgdal
-    conda install -c conda-forge gdal
-    conda install tiledb=2.2
-    conda install poppler
-
-Once the above commands were executed, check the version information by typing the following command on the `terminal`:
-
-    ogrinfo --version
-
-# Installation using Anaconda (geoanalytics package).
-
-1. Install and set up Anaconda. URL:   https://linuxize.com/post/how-to-install-anaconda-on-centos-7
-2. Create a virtual environment using conda. E.g., coda create --name geoAnalytics
-3. Enter into virtual environment.  E.g., conda activate geoAnalytics
-4. Install python.   E.g., conda install python
-5. Install pycharm from the website
-6. Open Pycharm and using VCS download the latest copy of geoAnalytics from GitHub
-7. In the pycharm, add geoAnalytics as the interpreter
-8. Open the terminal in pycharm, and execute the following command
-
-          pip install mplcursors matplotlib sklearn pandas
-
-***
 # Maintenance
 
-  __Installation__
-
-
-         pip install geoAnalytics
-
-
-  __Upgradation__
-
-  
-        pip install --upgrade geoAnalytics
-  
-
-  __Uninstallation__
-
-  
-        pip uninstall geoAnalytics 
-       
-
-  __Information__ 
-
-
-        pip show geoAnalytics
++----------------+----------------------------------------+
+| **Operation**  | **Command**                            |
++================+========================================+
+| Installation   | ``pip install geoAnalytics``           |
++----------------+----------------------------------------+
+| Upgradation    | ``pip install --upgrade geoAnalytics`` |
++----------------+----------------------------------------+
+| Uninstallation | ``pip uninstall geoAnalytics``         |
++----------------+----------------------------------------+
+| Information    | ``pip show geoAnalytics``              |
++----------------+----------------------------------------+
 
 ***
 # *Try your first geoAnalytics program*
